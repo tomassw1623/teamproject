@@ -6,12 +6,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>로그인</title>
     <!-- CSS 파일 연결 -->
-    <link rel="stylesheet" href="/css/styiles.css" />
+    <link rel="stylesheet" href="/css/styles.css" />
 </head>
 <body>
 
 
-<form id="registerForm" action="/login" method="post">
+<form id="registerForm" method="post">
 
 <!-- 상단 로그인 텍스트 -->
 <div class="top-login">로그인</div>
@@ -21,6 +21,26 @@
     <div class="login-form">
         <!-- 로그인 제목 -->
         <div class="login-title">로그인</div>
+<!--        <div>-->
+<!--            <label for="email-input">이메일</label>-->
+<!--            <input class="email-input" placeholder="이메일을 입력해주세요." id="email-input">-->
+<!--        </div>-->
+        <div class="form-group">
+        <div>
+            <label for="username-input">아이디 입력칸</label>
+            <input class="username-input" placeholder="아이디를 입력하세요" id="username-input">
+        </div>
+        </div>
+
+        <div class="form-group">
+
+        <div>
+            <label for="password-input">비밀번호칸</label>
+            <input class="password-input" placeholder="비밀번호를 입력해주세요" id="password-input">
+        </div>
+
+        </div>
+
         <div class="form-group">
             <!-- 아이디 입력 -->
             <label for="cusId">아이디</label>
@@ -40,6 +60,24 @@
     </div>
 </div>
 </form>
+<script>
+    const usernameInput = document.querySelector(".username-input");
+    const passwordValue = password.value;
+    const usernameValue = usernameInput.value;
 
+    // 서버한테 데이터 보내기.
+    fetch("login", {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify({ username: usernameValue, password: passwordValue })
+    })
+        .then(response => response.json())
+        .then(data => console.log(data))
+        .catch(error => console.error(error));
+</script>
 </body>
 </html>
+
+
