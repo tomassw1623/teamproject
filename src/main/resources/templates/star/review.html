@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<link rel="stylesheet" href="./style.css">
+
+
+<head>
+    <meta charset="UTF-8">
+    <title>starReview</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <!-- 여기에 jQuery 라이브러리를 로드하는 코드를 추가했습니다. -->
+</head>
+
+<body>
+<h2>리뷰작성 폼</h2>
+<div class="star_rating">
+    <span class="star on" value="0"></span>
+    <span class="star" value="1"></span>
+    <span class="star" value="2"></span>
+    <span class="star" value="3"></span>
+    <span class="star" value ="4"></span>
+</div>
+<textarea type="text" class="star_box" placeholder="리뷰 내용을 작성해주세요."></textarea>
+
+<input type="submit" class="btn02" value="리뷰 등록" />
+<script>
+    $(document).ready(function(){
+        $('.star_rating > .star').click(function() {
+            $(this).parent().children('span').removeClass('on');
+            $(this).addClass('on').prevAll('span').addClass('on');
+            // 별점 값을 저장
+            var starRating = $(this).attr('value');
+            $('.btn02').data('starRating', starRating);
+        });
+
+        $('.btn02').click(function() {
+            var starRating = $(this).data('starRating');
+            var reviewContent = $('.star_box').val();
+            $.ajax({
+                url: '/review',
+                type: 'POST',
+                contentType: 'application/json',
+                data: JSON.stringify({
+                    starRating: starRating,
+                    content: reviewContent
+                }),
+                success: function(response) {
+                    alert('리뷰가 성공적으로 저장되었습니다.');
+                },
+                error: function(error) {
+                    alert('리뷰 저장에 실패하였습니다.');
+                }
+            });
+        });
+    });
+</script>
+
+
+</body>
+</html>
