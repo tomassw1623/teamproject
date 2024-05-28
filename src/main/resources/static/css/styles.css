@@ -325,5 +325,5 @@ body {
 .store-buttons img {
     width: 250px;
     height: 100px;
-    background-image: url("/resources/static/images/tao.png");
+    background-image: url("/static/images/tao.png");
 }
