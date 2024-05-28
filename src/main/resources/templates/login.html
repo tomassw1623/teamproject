@@ -1,13 +1,18 @@
 <!DOCTYPE html>
-<html lang="ko">
+<html lang="ko"
+      xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>로그인</title>
     <!-- CSS 파일 연결 -->
-    <link rel="stylesheet" href="/resources/static/css/styiles.css" />
+    <link rel="stylesheet" href="/css/styiles.css" />
 </head>
 <body>
+
+
+<form id="registerForm" action="/login" method="post">
+
 <!-- 상단 로그인 텍스트 -->
 <div class="top-login">로그인</div>
 <!-- 로그인 컨테이너 시작 -->
@@ -23,14 +28,18 @@
         </div>
         <div class="form-group">
             <!-- 비밀번호 입력 -->
-            <label for="password">비밀번호</label>
-            <input type="password" id="password" name="password" />
+
+            <label for="ceoId">ID:</label>
+            <input type="text" id="ceoId" name="username" class="form-control">
         </div>
         <!-- 로그인 버튼 -->
-        <button type="submit" class="login-button">로그인</button>
+        <button type="submit" class="btn btn-primary submitBtn">로그인</button>
+
         <!-- 카카오톡 버튼 -->
         <button type="button" class="kakao-login-button">카카오 로그인</button>
     </div>
 </div>
+</form>
+
 </body>
 </html>
