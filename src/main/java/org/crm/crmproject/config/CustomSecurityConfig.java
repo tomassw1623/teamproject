@@ -38,7 +38,9 @@ public class CustomSecurityConfig {
 
         http.authorizeHttpRequests(authorize -> authorize // 권한 설정 부분
                         .requestMatchers("/").permitAll()
-                        .requestMatchers("/login", "/service", "/resources/**", "/ceo/join", "/customer/join").permitAll()
+                                        //static 메서드 접근
+                        .requestMatchers(PathRequest.toStaticResources().atCommonLocations()).permitAll()
+                        .requestMatchers("/login", "/service", "/ceo/join", "/customer/join").permitAll()
                         .requestMatchers("/ceo/**").hasRole("CEO")
                         .requestMatchers("/customer/**").hasRole("CUSTOMER")
                         .anyRequest().authenticated()
