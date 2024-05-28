@@ -1,21 +1,36 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ko">
 <head>
-    <title>Login</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>로그인</title>
+    <!-- CSS 파일 연결 -->
+    <link rel="stylesheet" href="/resources/static/css/styiles.css" />
 </head>
 <body>
-<h2>Login</h2>
-<th:block th:if="${param.logout != null}">
-    <h1>로그아웃함</h1>
-</th:block>
-<form id="registerForm" action="/login" method="post">
-    <label for="ceoId">ID:</label><br>
-    <input type="text" id="ceoId" name="username" class="form-control"><br>
-    <label for="ceoPw">Password:</label><br>
-    <input type="password" id="ceoPw" name="password" class="form-control" autocomplete="off"><br>
-    <input class="form-check-input" type="checkbox" name="receo-me">
-    <label class="form-check-label">자동로그인(5분)</label><br>
-    <button type="submit" class="btn btn-primary submitBtn">로그인이다</button>
-</form>
+<!-- 상단 로그인 텍스트 -->
+<div class="top-login">로그인</div>
+<!-- 로그인 컨테이너 시작 -->
+<div class="login-container">
+    <!-- 로그인 폼 -->
+    <div class="login-form">
+        <!-- 로그인 제목 -->
+        <div class="login-title">로그인</div>
+        <div class="form-group">
+            <!-- 아이디 입력 -->
+            <label for="cusId">아이디</label>
+            <input type="text" id="cusId" name="cusId" />
+        </div>
+        <div class="form-group">
+            <!-- 비밀번호 입력 -->
+            <label for="password">비밀번호</label>
+            <input type="password" id="password" name="password" />
+        </div>
+        <!-- 로그인 버튼 -->
+        <button type="submit" class="login-button">로그인</button>
+        <!-- 카카오톡 버튼 -->
+        <button type="button" class="kakao-login-button">카카오 로그인</button>
+    </div>
+</div>
 </body>
 </html>

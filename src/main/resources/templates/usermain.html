@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<script src="/static/js/script.js" defer></script>
+<title>메인 페이지</title>
+<!-- CSS 파일 연결 -->
+<link rel="stylesheet" href="/resources/static/css/styiles.css" />
+</head>
+<body>
+<!-- 헤더 섹션 -->
+<div class="header">
+    <div>
+        <img src="static/images/kakao.png">
+        <a href="#">마이페이지</a> <!-- 마이페이지 링크 -->
+    </div>
+    <button onclick="logout()">로그아웃</button> <!-- 로그아웃 버튼 -->
+</div>
+
+<!-- 메인 컨테이너 -->
+<div class="container">
+    <!-- 가게 선택 버튼들 -->
+    <div class="store-buttons">
+        <button>
+            <img src="static/images/tao.png"><br>
+            가게 1
+        </button>
+        <button>
+            <img src="static/images/tao.png"><br>
+            가게 2
+        </button>
+        <button>
+            <img src="static/images/tao.png"><br>
+            가게 3
+        </button>
+        <button>
+            <img src="static/images/tao.png"><br>
+            가게 4
+        </button>
+        <button>
+            <img src="static/images/tao.png"><br>
+            가게 5
+        </button>
+        <button>
+            <img src="static/images/tao.png"><br>
+            가게 6
+        </button>
+    </div>
+    <!-- 게시판 섹션 -->
+    <div class="board">
+        <h2>이벤트 소식</h2>
+        <div class="board-content">
+            <!-- 게시글 예시 -->
+            <div class="post">
+                <h3>이벤트 제목</h3>
+                <p>이벤트 내용</p>
+            </div>
+            <div class="post">
+                <h3>휴업 안내</h3>
+                <p>휴업 내용</p>
+            </div>
+            <!-- 추가 게시글은 여기에 추가하세요 -->
+        </div>
+    </div>
+</div>
+</body>
+</html>
