@@ -10,100 +10,36 @@
 </head>
 <body>
 <div class="container">
-    <div class="header">회원 가입</div>
-    <div class="tabs">
-        <div
-                class="tab active"
-                id="business-tab"
-                onclick="showForm('business')"
-        >
-            사업자
-        </div>
-        <div class="tab" id="user-tab" onclick="showForm('user')">유저</div>
-    </div>
+    <div class="header">고객 회원가입</div>
     <div class="form-wrapper">
-        <!-- 사업자 회원가입 -->
-        <div class="form-container active" id="business-form">
-            <div class="form-left">
-                <div class="form-group">
-                    <label for="business-ceoId">아이디</label>
-                    <input type="text" id="business-ceoId" name="ceoId" />
-                </div>
-                <div class="form-group">
-                    <label for="business-password">비밀번호</label>
-                    <input type="password" id="business-password" name="password" />
-                </div>
-                <div class="form-group">
-                    <label for="business-confirm-password">비밀번호 확인</label>
-                    <input
-                            type="password"
-                            id="business-confirm-password"
-                            name="confirm-password"
-                    />
-                </div>
-                <div class="form-group">
-                    <label for="business-name">이름</label>
-                    <input type="text" id="business-name" name="name" />
-                </div>
-                <div class="form-group">
-                    <label for="business-email">이메일</label>
-                    <div class="email-group">
-                        <input type="text" id="business-email" name="email" />
-                        <span>@</span>
-                        <select>
-                            <option value="naver.com">naver.com</option>
-                            <option value="gmail.com">gmail.com</option>
-                            <!-- 필요한 경우 다른 옵션 추가 -->
-                        </select>
-                    </div>
-                </div>
-            </div>
-            <div class="form-right">
-                <div class="form-group">
-                    <label for="store-phone">가게 전화번호</label>
-                    <input type="text" id="store-phone" name="store-phone" />
-                </div>
-                <div class="form-group">
-                    <label for="business-number">사업자 번호</label>
-                    <input type="text" id="business-number" name="business-number" />
-                </div>
-                <div class="form-group">
-                    <label for="store-name">가게 이름</label>
-                    <input type="text" id="store-name" name="store-name" />
-                </div>
-                <div class="form-group">
-                    <label for="store-address">가게 주소</label>
-                    <input type="text" id="store-address" name="store-address" />
-                </div>
-            </div>
-        </div>
+        <form id="registerForm" action="/customer/join" method="post">
         <!-- 유저 회원가입 -->
         <div class="form-container" id="user-form">
             <div class="form-left">
                 <div class="form-group">
                     <label for="user-cusId">아이디</label>
-                    <input type="text" id="user-cusId" name="cusId" />
+                    <input type="text" id="user-cusId" name="customerId" />
                 </div>
                 <div class="form-group">
                     <label for="user-password">비밀번호</label>
-                    <input type="password" id="user-password" name="password" />
+                    <input type="password" id="user-password" name="customerPw" />
                 </div>
-                <div class="form-group">
-                    <label for="user-confirm-password">비밀번호 확인</label>
-                    <input
-                            type="password"
-                            id="user-confirm-password"
-                            name="confirm-password"
-                    />
-                </div>
+<!--                <div class="form-group">-->
+<!--                    <label for="user-confirm-password">비밀번호 확인</label>-->
+<!--                    <input-->
+<!--                            type="password"-->
+<!--                            id="user-confirm-password"-->
+<!--                            name="confirm-password"-->
+<!--                    />-->
+<!--                </div>-->
                 <div class="form-group">
                     <label for="user-name">이름</label>
-                    <input type="text" id="user-name" name="name" />
+                    <input type="text" id="user-name" name="customerName" />
                 </div>
                 <div class="form-group">
                     <label for="user-email">이메일</label>
                     <div class="email-group">
-                        <input type="text" id="user-email" name="email" />
+                        <input type="text" id="user-email" name="customerEmail" />
                         <span>@</span>
                         <select>
                             <option value="naver.com">naver.com</option>
@@ -112,30 +48,31 @@
                         </select>
                     </div>
                 </div>
-            </div>
+            </div> <!-- end form-left -->
             <div class="form-right">
                 <div class="form-group">
                     <label for="user-phone">휴대폰 번호</label>
-                    <input type="text" id="user-phone" name="user-phone" />
+                    <input type="text" id="user-phone" name="customerPhone" />
                 </div>
                 <div class="form-group">
                     <label for="nickname">닉네임</label>
-                    <input type="text" id="nickname" name="nickname" />
+                    <input type="text" id="nickname" name="customerNick" />
                 </div>
                 <div class="form-group">
                     <label for="gender">성별</label>
-                    <select id="gender" name="gender">
+                    <select id="gender" name="customerGender">
                         <option value="male">남자</option>
                         <option value="female">여자</option>
                     </select>
                 </div>
+            </div> <!-- end form-right -->
+        </div> <!-- end form-container -->
+            <div class="submit-btn">
+                <button type="submit">회원 가입</button>
             </div>
-        </div>
-    </div>
-    <div class="submit-btn">
-        <button type="submit">회원 가입</button>
-    </div>
-</div>
+        </form>
+    </div> <!-- end wrapper -->
+</div> <!--end container -->
 <!-- JavaScript 파일 링크 -->
 <script src="/js/script.js"></script>
 </body>
