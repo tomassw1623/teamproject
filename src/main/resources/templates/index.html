@@ -5,11 +5,19 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>TEST Place</title>
     <style>
+        @keyframes gradientBackground {
+            0% {background-position: 0% 50%;}
+            50% {background-position: 100% 50%;}
+            100% {background-position: 0% 50%;}
+        }
         body {
             font-family: Arial, sans-serif;
             margin: 0;
             padding: 0;
-            background-color: #f0f0f0;
+            background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
+            background-size: 400% 400%;
+            animation: gradientBackground 15s ease infinite;
+            color: white;
         }
         h1 {
             color: #333;
@@ -23,13 +31,13 @@
             height: 50px;
             line-height: 50px;
             text-align: center;
-            background-color: #007BFF;
+            background-color: #b700ff;
             color: white;
             border-radius: 5px;
             text-decoration: none;
         }
         a:hover {
-            background-color: #0056b3;
+            background-color: #d34bd3;
         }
     </style>
 </head>
@@ -39,6 +47,9 @@
 <a href="/ceo/join">사업자 회원으로 가입하기</a>
 <a href="/customer/join">고객 회원으로 가입하기</a>
 <a href="/customer/logout">로그아웃</a>
+<hr>
+
+<a href="/main/board">보드로 가기</a>
 
 <br>
 <hr/>
