@@ -59,10 +59,10 @@ public class CustomSecurityConfig {
 
                     if (isCustomer) {
                         System.out.println("authentication: " + authentication.getName());
-                        response.sendRedirect("/customer/update");
+                        response.sendRedirect("/main/board      ");
                     } else if (isCeo) {
                         System.out.println("authentication: " + authentication.getName());
-                        response.sendRedirect("/ceo/update");
+                        response.sendRedirect("/main/board");
                     }
                 }).permitAll();
             })
