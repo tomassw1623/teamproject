@@ -1,59 +1,79 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.w3.org/1999/xhtml">
+<html lang="ko"
+      xmlns:th="http://www.thymeleaf.org">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Customer Join</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>회원 가입</title>
+    <!-- CSS 파일 링크 -->
+    <link rel="stylesheet" href="/css/styles.css" />
 </head>
 <body>
-<h2>고객 회원가입 ~_~</h2>
-<form id="registerForm" action="/customer/join" method="post">
-    <label>아이디:</label><br>
-    <input type="text" name="customerId" placeholder="아이디"><br>
-
-    <label>비밀번호:</label><br>
-    <input type="password" name="customerPw" placeholder="비밀번호"><br>
-
-<!--    <label>비밀번호 확인:</label><br>-->
-<!--    <input type="password" id="pwCheck" name="pwCheck"><br>-->
-
-    <label>이름:</label><br>
-    <input type="text" id="name" name="customerName" placeholder="이름"><br>
-
-    <label>성별:</label><br>
-    <select id="gender" name="customerGender">
-        <option value="male">남성</option>
-        <option value="female">여성</option>
-    </select><br>
-
-    <label>이메일:</label><br>
-    <input type="email" id="email" name="customerEmail" placeholder="이메일"><br>
-
-    <label>핸드폰 번호:</label><br>
-    <input type="tel" id="phone" name="customerPhone" placeholder="휴대폰 번호"><br>
-
-    <label>닉네임:</label><br>
-    <input type="text" id="nick" name="customerNick" placeholder="닉네임"><br>
-
-    <input type="hidden" name="roleSet" th:value="'CUSTOMER'">
-
-
-    <button type="submit" class="btn btn-primary submitBtn">가입하기</button>
-    <button type="reset" class="btn btn-secondary">다시 작성하기</button>
-
-
-    <!--아이디 중복 확인-->
-    <script th:inline="javascript">
-
-        const error = [[${error}]]
-
-        if(error && error === 'customerID') {
-            alert("동일한 ID를 가진 계정이 존재합니다.")
-        }
-
-    </script>
-
-
-</form>
+<div class="container">
+    <div class="header">고객 회원가입</div>
+    <div class="form-wrapper">
+        <form id="registerForm" action="/customer/join" method="post">
+        <!-- 유저 회원가입 -->
+        <div class="form-container" id="user-form">
+            <div class="form-left">
+                <div class="form-group">
+                    <label for="user-cusId">아이디</label>
+                    <input type="text" id="user-cusId" name="customerId" />
+                </div>
+                <div class="form-group">
+                    <label for="user-password">비밀번호</label>
+                    <input type="password" id="user-password" name="customerPw" />
+                </div>
+<!--                <div class="form-group">-->
+<!--                    <label for="user-confirm-password">비밀번호 확인</label>-->
+<!--                    <input-->
+<!--                            type="password"-->
+<!--                            id="user-confirm-password"-->
+<!--                            name="confirm-password"-->
+<!--                    />-->
+<!--                </div>-->
+                <div class="form-group">
+                    <label for="user-name">이름</label>
+                    <input type="text" id="user-name" name="customerName" />
+                </div>
+                <div class="form-group">
+                    <label for="user-email">이메일</label>
+                    <div class="email-group">
+                        <input type="text" id="user-email" name="customerEmail" />
+                        <span>@</span>
+                        <select>
+                            <option value="naver.com">naver.com</option>
+                            <option value="gmail.com">gmail.com</option>
+                            <!-- 필요한 경우 다른 옵션 추가 -->
+                        </select>
+                    </div>
+                </div>
+            </div> <!-- end form-left -->
+            <div class="form-right">
+                <div class="form-group">
+                    <label for="user-phone">휴대폰 번호</label>
+                    <input type="text" id="user-phone" name="customerPhone" />
+                </div>
+                <div class="form-group">
+                    <label for="nickname">닉네임</label>
+                    <input type="text" id="nickname" name="customerNick" />
+                </div>
+                <div class="form-group">
+                    <label for="gender">성별</label>
+                    <select id="gender" name="customerGender">
+                        <option value="male">남자</option>
+                        <option value="female">여자</option>
+                    </select>
+                </div>
+            </div> <!-- end form-right -->
+        </div> <!-- end form-container -->
+            <div class="submit-btn">
+                <button type="submit">회원 가입</button>
+            </div>
+        </form>
+    </div> <!-- end wrapper -->
+</div> <!--end container -->
+<!-- JavaScript 파일 링크 -->
+<script src="/js/script.js"></script>
 </body>
 </html>

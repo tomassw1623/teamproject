@@ -1,12 +1,136 @@
 <!DOCTYPE html>
-<html lang="ko">
+<html lang="ko"
+      xmlns:th="http://www.thymeleaf.org" >
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>로그인</title>
     <!-- CSS 파일 연결 -->
-    <link rel="stylesheet" href="/resources/static/css/styiles.css" />
+    <link rel="stylesheet" th:href="@{/css/styles.css}" />
 </head>
+
+<!--<style>-->
+<!--    /* 기본 페이지 스타일 */-->
+<!--    body {-->
+<!--        display: flex;-->
+<!--        flex-direction: column;-->
+<!--        align-items: center;-->
+<!--        height: 100vh;-->
+<!--        margin: 0;-->
+<!--        font-family: Arial, sans-serif;-->
+<!--        background-color: #f7f7f7;-->
+<!--    }-->
+
+<!--    /* 상단 로그인 텍스트 스타일 */-->
+<!--    .top-login {-->
+<!--        width: 100%;-->
+<!--        text-align: left;-->
+<!--        padding: 40px;-->
+<!--        box-sizing: border-box;-->
+<!--        font-size: 40px;-->
+<!--        border-bottom: 1px solid #ccc;-->
+<!--    }-->
+
+<!--    /* 로그인 컨테이너 스타일 */-->
+<!--    .login-container {-->
+<!--        display: flex;-->
+<!--        justify-content: center;-->
+<!--        align-items: center;-->
+<!--        height: 100%;-->
+<!--        width: 100%;-->
+<!--        padding: 40px;-->
+<!--        box-sizing: border-box;-->
+<!--    }-->
+
+<!--    /* 로그인 폼 스타일 */-->
+<!--    .login-form {-->
+<!--        display: flex;-->
+<!--        flex-direction: column;-->
+<!--        align-items: center;-->
+<!--        border: 1px solid #ccc;-->
+<!--        padding: 40px;-->
+<!--        background-color: #fff;-->
+<!--        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);-->
+<!--        box-sizing: border-box;-->
+<!--        border-radius: 8px;-->
+<!--        width: 350px;-->
+<!--    }-->
+
+<!--    /* 로그인 제목 스타일 */-->
+<!--    .login-title {-->
+<!--        font-size: 35px;-->
+<!--        margin-bottom: 20px;-->
+<!--    }-->
+
+<!--    /* 폼 그룹 스타일 */-->
+<!--    .form-group {-->
+<!--        display: flex;-->
+<!--        flex-direction: column;-->
+<!--        margin-bottom: 15px;-->
+<!--        width: 100%;-->
+<!--    }-->
+
+<!--    /* 폼 그룹 레이블 스타일 */-->
+<!--    .form-group label {-->
+<!--        margin-bottom: 5px;-->
+<!--        font-size: 18px;-->
+<!--    }-->
+
+<!--    /* 폼 그룹 입력 스타일 */-->
+<!--    .form-group input {-->
+<!--        padding: 10px;-->
+<!--        font-size: 16px;-->
+<!--        border: 1px solid #ccc;-->
+<!--        border-radius: 4px;-->
+<!--        width: 100%;-->
+<!--    }-->
+
+<!--    /* 로그인 버튼 스타일 */-->
+<!--    .login-button {-->
+<!--        width: 300px;-->
+<!--        height: 40px;-->
+<!--        background-color: #87ceeb;-->
+<!--        border: none;-->
+<!--        color: white;-->
+<!--        cursor: pointer;-->
+<!--        text-align: center;-->
+<!--        margin-top: 20px;-->
+<!--        border-radius: 5px;-->
+<!--    }-->
+
+<!--    /* 로그인 버튼 호버 스타일 */-->
+<!--    .login-button:hover {-->
+<!--        background-color: #00bfff;-->
+<!--    }-->
+
+<!--    /* 카카오톡 로그인 버튼 스타일 */-->
+<!--    .kakao-login-button {-->
+<!--        width: 300px;-->
+<!--        height: 40px;-->
+<!--        background-color: #f7e600;-->
+<!--        border: none;-->
+<!--        color: #3c1e1e;-->
+<!--        cursor: pointer;-->
+<!--        text-align: center;-->
+<!--        margin-top: 10px;-->
+<!--        display: flex;-->
+<!--        align-items: center;-->
+<!--        justify-content: center;-->
+<!--        font-size: 16px;-->
+<!--        background-image: url("/static/images/kakao.png"); /* 카카오톡 아이콘 경로 절대 경로로 설정 */-->
+<!--        background-repeat: no-repeat;-->
+<!--        background-position: 10px center;-->
+<!--        background-size: 30px 30px; /* 아이콘 크기 조정 */-->
+<!--        border-radius: 5px;-->
+<!--    }-->
+
+<!--    /* 카카오톡 로그인 버튼 호버 스타일 */-->
+<!--    .kakao-login-button:hover {-->
+<!--        background-color: #e5c900;-->
+<!--    }-->
+
+<!--</style>-->
+
 <body>
 <!-- 상단 로그인 텍스트 -->
 <div class="top-login">로그인</div>
@@ -15,21 +139,36 @@
     <!-- 로그인 폼 -->
     <div class="login-form">
         <!-- 로그인 제목 -->
+<!--        <div class="login-title">로그인</div>-->
+<!--        <div class="form-group">-->
+<!--            &lt;!&ndash; 아이디 입력 &ndash;&gt;-->
+<!--            <label for="cusId">아이디</label>-->
+<!--            <input type="text" id="cusId" name="username" class="form-controller" />-->
+<!--        </div>-->
+<!--        <div class="form-group">-->
+<!--            &lt;!&ndash; 비밀번호 입력 &ndash;&gt;-->
+<!--            <label for="password">비밀번호</label>-->
+<!--            <input type="password" id="password" name="password" />-->
+<!--        </div>-->
+
         <div class="login-title">로그인</div>
-        <div class="form-group">
-            <!-- 아이디 입력 -->
-            <label for="cusId">아이디</label>
-            <input type="text" id="cusId" name="cusId" />
-        </div>
-        <div class="form-group">
-            <!-- 비밀번호 입력 -->
-            <label for="password">비밀번호</label>
-            <input type="password" id="password" name="password" />
-        </div>
-        <!-- 로그인 버튼 -->
-        <button type="submit" class="login-button">로그인</button>
-        <!-- 카카오톡 버튼 -->
+        <form id="registerForm" action="/login" method="post">
+            <div class="form-group">
+                <label for="cusId">아이디</label>
+                <input type="text" id="cusId" name="username" class="form-controller" />
+            </div>
+            <div class="form-group">
+                <label for="password">비밀번호</label>
+                <input type="password" id="password" name="password" />
+            </div>
+            <button type="submit" class="login-button">로그인</button>
+        </form>
+        <!-- 카카오톡 로그인 버튼 -->
         <button type="button" class="kakao-login-button">카카오 로그인</button>
+
+        <th:block th:if="${param.logout != null}">
+            <h1>로그아웃함</h1>
+        </th:block>
     </div>
 </div>
 </body>
