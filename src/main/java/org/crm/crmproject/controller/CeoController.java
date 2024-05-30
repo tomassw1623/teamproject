@@ -5,7 +5,7 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
 import org.crm.crmproject.dto.CeoDTO;
 import org.crm.crmproject.repository.CeoRepository;
-import org.crm.crmproject.service.MemberService;
+import org.crm.crmproject.service.CeoService;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -19,7 +19,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 @RequiredArgsConstructor
 public class CeoController {
 
-    private final MemberService memberService;
+    private final CeoService ceoService;
     private final CeoRepository ceoRepository;
     private final PasswordEncoder passwordEncoder;
 
@@ -36,8 +36,8 @@ public class CeoController {
         log.info(ceoDTO);
 
         try {
-            memberService.ceoJoin(ceoDTO);
-        } catch (MemberService.MidExistException e) {
+            ceoService.ceoJoin(ceoDTO);
+        } catch (CeoService.MidExistException e) {
             redirectAttributes.addFlashAttribute("error", "ceoID");
             return "redirect:/ceo/join";
         }
