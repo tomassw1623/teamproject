@@ -19,9 +19,6 @@ public class Ceo {
     @Column(name = "ceo_no")
     private Long ceoNo;
 
-
-
-
     @Column(unique = true, nullable = false)
     private String ceoId;
 
