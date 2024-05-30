@@ -1,10 +1,124 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
 <head>
-  <meta charset="UTF-8">
-  <title>$Title$</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>메인 페이지</title>
+<!--  <link rel="stylesheet" href="/resources/static/css/ceomain.css" />-->
+  <link rel="stylesheet" th:href="@{/css/ceomain.css}" />
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script defer>
+    document.addEventListener("DOMContentLoaded", function () {
+      var barCtx = document.getElementById("barGraph").getContext("2d");
+      var pieCtx = document.getElementById("pieChart").getContext("2d");
+
+      var barChart = new Chart(barCtx, {
+        type: "bar",
+        data: {
+          labels: ["January", "February", "March", "April", "May", "June"],
+          datasets: [
+            {
+              label: "Sales",
+              data: [12, 19, 3, 5, 2, 3],
+              backgroundColor: "rgba(75, 192, 192, 0.2)",
+              borderColor: "rgba(75, 192, 192, 1)",
+              borderWidth: 1,
+            },
+          ],
+        },
+        options: {
+          scales: {
+            y: {
+              beginAtZero: true,
+            },
+          },
+        },
+      });
+
+      var pieChart = new Chart(pieCtx, {
+        type: "pie",
+        data: {
+          labels: ["Red", "Blue", "Yellow"],
+          datasets: [
+            {
+              label: "Colors",
+              data: [12, 19, 3],
+              backgroundColor: [
+                "rgba(255, 99, 132, 0.2)",
+                "rgba(54, 162, 235, 0.2)",
+                "rgba(255, 206, 86, 0.2)",
+              ],
+              borderColor: [
+                "rgba(255, 99, 132, 1)",
+                "rgba(54, 162, 235, 1)",
+                "rgba(255, 206, 86, 1)",
+              ],
+              borderWidth: 1,
+            },
+          ],
+        },
+      });
+
+      window.updateGraphs = function (menu) {
+        var newData = [
+          Math.random() * 10,
+          Math.random() * 10,
+          Math.random() * 10,
+          Math.random() * 10,
+          Math.random() * 10,
+          Math.random() * 10,
+        ];
+        barChart.data.datasets[0].data = newData;
+        barChart.update();
+
+        var newPieData = [
+          Math.random() * 10,
+          Math.random() * 10,
+          Math.random() * 10,
+        ];
+        pieChart.data.datasets[0].data = newPieData;
+        pieChart.update();
+      };
+    });
+  </script>
 </head>
 <body>
-$END$
+<div class="header">
+  <div class="header-left"></div>
+  <div class="header-right">
+    <img
+            src="/resources/static/uploadprofile/stoar.jpg"
+            alt="프로필 사진"
+            class="profile-img"
+    />
+    <button id="/mypage">마이페이지</button>
+    <button id="logoutButton">로그아웃</button>
+  </div>
+</div>
+<div class="container">
+  <div class="content">
+    <div class="graph-container">
+      <div class="chart-container">
+        <canvas id="barGraph" class="graph"></canvas>
+      </div>
+      <div class="pie-chart-container">
+        <canvas id="pieChart" class="graph circle"></canvas>
+      </div>
+    </div>
+    <h2>월별 매출</h2>
+    <div class="menu-container">
+      <button class="menu-button" onclick="updateGraphs(1)">메뉴 1</button>
+      <button class="menu-button" onclick="updateGraphs(2)">메뉴 2</button>
+      <button class="menu-button" onclick="updateGraphs(3)">메뉴 3</button>
+      <button class="menu-button" onclick="updateGraphs(4)">메뉴 4</button>
+      <button class="menu-button" onclick="updateGraphs(5)">메뉴 5</button>
+      <button class="menu-button" onclick="updateGraphs(6)">메뉴 6</button>
+      <button class="menu-button" onclick="updateGraphs(7)">메뉴 7</button>
+      <button class="menu-button" onclick="location.href='/addPage'">
+        + 추가
+      </button>
+    </div>
+  </div>
+</div>
 </body>
 </html>

@@ -1,10 +1,90 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
 <head>
-  <meta charset="UTF-8">
-  <title>$Title$</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>메인 페이지</title>
+  <!-- CSS 파일을 포함하는 방식 -->
+   <link rel="stylesheet" th:href="@{/css/usermain.css}" />
+  <!-- spring boot 용-->
+<!--  <link rel="stylesheet" href="/resources/static/css/usermain.css" />-->
+  <!-- 그냥 웹으로 확인할 때 -->
+  <!-- JavaScript 파일을 포함하는 방식 -->
+  <script th:src="@{/js/script.js}" defer></script>
 </head>
 <body>
-$END$
+<!-- 헤더 섹션 -->
+<div class="header">
+  <div class="header-left"></div>
+  <div class="header-right">
+    <img
+            src="/resources/static/uploadprofile/user.jpg"
+            alt="프로필 사진"
+            class="profile-img"
+    />
+    <button id="/mypage">마이페이지</button>
+    <button id="logoutButton">로그아웃</button>
+  </div>
+</div>
+
+<!-- 메인 컨테이너 -->
+<div class="container">
+  <!-- 가게 선택 버튼들 -->
+  <div class="store-buttons">
+    <button onclick="location.href='/store/1'">
+      <img
+              src="/resources/static/images/ham.png"
+              alt="가게 1 이미지"
+      /><br />
+      가게 1
+    </button>
+    <button onclick="location.href='/store/2'">
+      <img
+              src="/resources/static/images/ham.png"
+              alt="가게 2 이미지"
+      /><br />
+      가게 2
+    </button>
+    <button onclick="location.href='/store/3'">
+      <img
+              src="/resources/static/images/ham.png"
+              alt="가게 3 이미지"
+      /><br />
+      가게 3
+    </button>
+    <button onclick="location.href='/store/4'">
+      <img
+              src="/resources/static/images/ham.png"
+              alt="가게 4 이미지"
+      /><br />
+      가게 4
+    </button>
+    <button onclick="location.href='/store/5'">
+      <img
+              src="/resources/static/images/ham.png"
+              alt="가게 5 이미지"
+      /><br />
+      가게 5
+    </button>
+    <button onclick="location.href='/store/6'">
+      <img
+              src="/resources/static/images/ham.png"
+              alt="가게 6 이미지"
+      /><br />
+      가게 6
+    </button>
+  </div>
+  <!-- 게시판 섹션 -->
+  <div class="board">
+    <h2>이벤트 소식</h2>
+    <div class="board-content">
+      <!-- 게시글 섹션 (나중에 추가될 게시글들) -->
+    </div>
+    <div class="pagination">
+      <button onclick="prevPage()">이전</button>
+      <button onclick="nextPage()">다음</button>
+    </div>
+  </div>
+</div>
 </body>
 </html>
