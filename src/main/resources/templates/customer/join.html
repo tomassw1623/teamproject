@@ -13,7 +13,8 @@
     <div class="header">고객 회원가입</div>
     <div class="form-wrapper">
         <form id="registerForm" action="/customer/join" method="post">
-        <!-- 유저 회원가입 -->
+            <input type="hidden" name="roleSet" th:value="CUSTOMER">
+            <!-- 유저 회원가입 -->
         <div class="form-container" id="user-form">
             <div class="form-left">
                 <div class="form-group">
