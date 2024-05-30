@@ -4,9 +4,8 @@ import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
 import org.crm.crmproject.dto.CustomerDTO;
-import org.crm.crmproject.dto.CustomerDTO;
 import org.crm.crmproject.repository.CustomerRepository;
-import org.crm.crmproject.service.MemberService;
+import org.crm.crmproject.service.CustomerService;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -20,7 +19,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 @RequiredArgsConstructor
 public class CustomerController {
 
-    private final MemberService memberService;
+    private final CustomerService customerService;
     private final CustomerRepository customerRepository;
     private final PasswordEncoder passwordEncoder;
 
@@ -37,8 +36,8 @@ public class CustomerController {
         log.info(customerDTO);
 
         try {
-            memberService.customerJoin(customerDTO);
-        } catch (MemberService.MidExistException e) {
+            customerService.customerJoin(customerDTO);
+        } catch (CustomerService.MidExistException e) {
             redirectAttributes.addFlashAttribute("error", "customerID");
             return "redirect:/customer/join";
         }
