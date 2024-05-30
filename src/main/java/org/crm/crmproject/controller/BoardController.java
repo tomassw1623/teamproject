@@ -22,6 +22,19 @@ public class BoardController {
 
     private final BoardService boardService;
 
+    //ceo 개인페이지 들어가기
+    @GetMapping("/ceomain")
+    public String GoCeoMain(){
+        return "ceo/ceomain";
+    }
+    ///유저페이지
+    @GetMapping("/cusmain")
+    public String GoCustMain(){
+        return "/customer/usermain";
+    }
+
+
+
     @GetMapping("/test")
     public void testBoard(Model model, Long bno) {
         log.info("테스트 게시판 들어간다");

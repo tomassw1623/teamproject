@@ -12,7 +12,7 @@ import java.util.Set;
 @AllArgsConstructor
 @NoArgsConstructor
 @ToString
-public class Board {
+public class  Board {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

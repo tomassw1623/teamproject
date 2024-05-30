@@ -19,6 +19,12 @@ public class Ceo {
     @Column(name = "ceo_no")
     private Long ceoNo;
 
+    //프로필사진
+    @OneToOne(mappedBy = "ceo", fetch = FetchType.LAZY)
+    private Set<Image> images = new HashSet<>();
+    //프로필사진end
+
+
     @Column(unique = true, nullable = false)
     private String ceoId;
 
@@ -49,6 +55,8 @@ public class Ceo {
     public void addRole(Role role) {
         this.roleSet.add(role);
     }
+
+
 
 
 }
