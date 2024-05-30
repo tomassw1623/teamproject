@@ -1,9 +1,9 @@
 package org.crm.crmproject.domain;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.ManyToOne;
+import jakarta.persistence.*;
 import lombok.*;
+
+import java.lang.reflect.Member;
 
 @Entity
 @Getter
@@ -31,4 +31,6 @@ public class BoardImage implements Comparable<BoardImage> {
     public void changeBoard(Board board) {
         this.board = board;
     }
+
+
 }
