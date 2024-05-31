@@ -17,7 +17,7 @@ public class StoreController {
     @GetMapping("/stores/{ceoId}")
     public String getStorePage(@PathVariable String ceoId, Model model) {
         Ceo ceo = ceoRepository.getWithRoles(ceoId)
-                .orElseThrow(() -> new IllegalArgumentException("사장 아이디! : "+ceoId));
+                .orElseThrow(() -> new IllegalArgumentException("사장 아이디! : "+ ceoId));
         model.addAttribute("ceo", ceo);
         model.addAttribute("stores", ceo.getStores());
         return "storePage";
