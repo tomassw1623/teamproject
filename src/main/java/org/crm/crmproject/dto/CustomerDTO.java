@@ -1,11 +1,14 @@
 package org.crm.crmproject.dto;
 
-import lombok.Data;
+import lombok.*;
 import org.crm.crmproject.domain.Role;
 
 import java.util.Set;
 
 @Data
+@Builder
+@AllArgsConstructor
+@NoArgsConstructor
 public class CustomerDTO {
     private Long customerNo;
 

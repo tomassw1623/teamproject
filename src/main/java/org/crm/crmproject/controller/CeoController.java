@@ -6,6 +6,7 @@ import lombok.extern.log4j.Log4j2;
 import org.crm.crmproject.dto.CeoDTO;
 import org.crm.crmproject.repository.CeoRepository;
 import org.crm.crmproject.service.CeoService;
+import org.springframework.security.core.Authentication;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -45,6 +46,19 @@ public class CeoController {
         return "redirect:/login";
     }
 
+    //  로그인 시 사업자 메인페이지로 이동
+    @GetMapping("/ceomain")
+    public String ceoMain() {
+        return "/ceo/ceomain";
+    }
+
+    //  사업자 마이페이지 이동
+    @GetMapping("/ceomypage")
+    public String ceoMyPage() {
+        return "/ceo/ceomypage";
+    }
+
+
     @GetMapping("/update")
     public void ceoUpdateGet(){
         log.info("----- 사장 업데이트 겟또! -----");
@@ -65,6 +79,7 @@ public class CeoController {
         redirectAttributes.addAttribute("result", "success");
         return "redirect:/ceo/update";
     }
+
 }
 
 
