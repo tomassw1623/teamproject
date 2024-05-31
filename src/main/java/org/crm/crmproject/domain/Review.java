@@ -1,28 +1,30 @@
 package org.crm.crmproject.domain;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Getter;
-import lombok.ToString;
+import jakarta.persistence.*;
+import lombok.*;
+import org.hibernate.annotations.Fetch;
 
 @Entity
 @Getter
 @Builder
-@ToString
+@ToString(exclude = "customer")
 @AllArgsConstructor
+@NoArgsConstructor
 public class Review {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long rn;
 
-    private String review;
+    private String comment;
 
-    private Long star;
+    private int star;
 
-    public Review() {}
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "customer_id")
+    private Customer customer;
+
+
+//    public Review() {}
 }
