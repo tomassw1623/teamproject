@@ -31,8 +31,13 @@ body {
 
 .header-right a,
 .header-right button {
-    color: #fff; /* 버튼과 링크 텍스트 흰색 */
+    margin-left: 10px;
+    text-decoration: none;
+    color: #007bff; /* 링크 텍스트 파란색 */
+    font-size: 18px;
     background: none;
+    border: none;
+    cursor: pointer;
     transition: color 0.3s; /* 색상 변화 애니메이션 */
 }
 

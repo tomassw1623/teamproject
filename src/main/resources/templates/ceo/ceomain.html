@@ -86,11 +86,7 @@
 <div class="header">
   <div class="header-left"></div>
   <div class="header-right">
-    <img
-            src="/static/uploadprofile/stoar.jpg"
-            alt="프로필 사진"
-            class="profile-img"
-    />
+    <img th:src="@{/uploadprofile/stoar.jpg}" alt="프로필 사진" class="profile-img" />
     <button id="myPageButton" th:href="@{/myPage}">마이페이지</button>
     <button id="logoutButton">로그아웃</button>
   </div>
@@ -107,16 +103,14 @@
     </div>
     <h2>월별 매출</h2>
     <div class="menu-container">
-      <button class="menu-button" onclick="updateGraphs(1)">메뉴 1</button>
-      <button class="menu-button" onclick="updateGraphs(2)">메뉴 2</button>
-      <button class="menu-button" onclick="updateGraphs(3)">메뉴 3</button>
-      <button class="menu-button" onclick="updateGraphs(4)">메뉴 4</button>
-      <button class="menu-button" onclick="updateGraphs(5)">메뉴 5</button>
-      <button class="menu-button" onclick="updateGraphs(6)">메뉴 6</button>
-      <button class="menu-button" onclick="updateGraphs(7)">메뉴 7</button>
-      <button class="menu-button" onclick="location.href='/addPage'">
-        + 추가
-      </button>
+      <button class="menu-button" onclick="updateGraphs(1)">햄버거 세트1 [9000원]</button>
+      <button class="menu-button" onclick="updateGraphs(2)">햄버거 세트2 [9000원]</button>
+      <button class="menu-button" onclick="updateGraphs(3)">햄버거 세트3 [9000원]</button>
+      <button class="menu-button" onclick="updateGraphs(4)">햄버거 세트4 [9000원]</button>
+      <button class="menu-button" onclick="updateGraphs(5)">햄버거 세트5 [9000원]</button>
+      <button class="menu-button" onclick="updateGraphs(6)">햄버거 세트6 [9000원]</button>
+      <button class="menu-button" onclick="updateGraphs(7)">햄버거 세트7 [9000원]</button>
+      <button class="menu-button" onclick="updateGraphs(7)">햄버거 세트8 [9000원]</button>
     </div>
   </div>
 </div>
