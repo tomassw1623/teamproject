@@ -11,6 +11,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.security.crypto.password.PasswordEncoder;
 
 import java.util.Optional;
+import java.util.stream.IntStream;
 import java.util.stream.LongStream;
 
 @Log4j2
@@ -25,7 +26,7 @@ public class CustomerRepositoryTests {
 
     @Test
     public void InsertCustomerTests(){
-        LongStream.range(1,10).forEach(i ->{
+        IntStream.rangeClosed(1,10).forEach(i -> {
             Customer customer = Customer.builder()
                     .customerId("고객아이디" + i)
                     .customerPw(passwordEncoder.encode("1111"))
@@ -53,5 +54,6 @@ public class CustomerRepositoryTests {
 
         customer.getRoleSet().forEach(role -> log.info(role.name()));
     }
+
 
 }

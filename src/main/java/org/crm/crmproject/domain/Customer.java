@@ -12,7 +12,6 @@ import java.util.Set;
 @AllArgsConstructor
 @NoArgsConstructor
 @ToString(exclude = "roleSet")
-
 public class Customer {
 
     @Id
@@ -39,8 +38,8 @@ public class Customer {
     // Customer Entity 를 참조하는 roleSet table 생성용
     @ElementCollection(targetClass = Role.class, fetch = FetchType.LAZY)
     @Builder.Default
-//    @JoinTable(name = "customer_role_set", joinColumns = @JoinColumn(name = "customer_no"))
-//    @Column(name = "role_set")
+    //    @JoinTable(name = "customer_role_set", joinColumns = @JoinColumn(name = "customer_no"))
+    //    @Column(name = "role_set")
     @Enumerated(EnumType.STRING)
     private Set<Role> roleSet = new HashSet<>();
 
