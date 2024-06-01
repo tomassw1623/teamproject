@@ -38,8 +38,8 @@ public class Ceo {
 
     private String storeAddress;
 
-    @OneToMany(mappedBy = "ceo")
-    private List<store> stores;
+//    @OneToMany(mappedBy = "ceo")
+//    private List<store> stores;
 
     // Ceo Entity 를 참조하는 roleSet table 생성용
     @ElementCollection(targetClass = Role.class, fetch = FetchType.LAZY)
@@ -54,16 +54,16 @@ public class Ceo {
         this.roleSet.add(role);
     }
 
-    @Entity
-    public static class store{
-        @Id
-        @GeneratedValue(strategy = GenerationType.IDENTITY)
-        private Long id;
-        private String name;
-        private String description;
-
-        @ManyToOne
-        @JoinColumn(name= "ceo_ceoId")
-        private Ceo ceo;
-    }
+//    @Entity
+//    public static class store{
+//        @Id
+//        @GeneratedValue(strategy = GenerationType.IDENTITY)
+//        private Long id;
+//        private String name;
+//        private String description;
+//
+//        @ManyToOne
+//        @JoinColumn(name= "ceo_ceoId")
+//        private Ceo ceo;
+//    }
 }

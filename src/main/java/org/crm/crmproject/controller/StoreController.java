@@ -9,17 +9,17 @@ import org.springframework.web.bind.annotation.PathVariable;
 
 @Controller
 public class StoreController {
-    private final CeoRepository ceoRepository;
+//    private final CeoRepository ceoRepository;
 
-    public StoreController(CeoRepository ceoRepository) {
-        this.ceoRepository = ceoRepository;
-    }
-    @GetMapping("/stores/{ceoId}")
-    public String getStorePage(@PathVariable String ceoId, Model model) {
-        Ceo ceo = ceoRepository.getWithRoles(ceoId)
-                .orElseThrow(() -> new IllegalArgumentException("사장 아이디! : "+ ceoId));
-        model.addAttribute("ceo", ceo);
-        model.addAttribute("stores", ceo.getStores());
-        return "storePage";
-    }
+//    public StoreController(CeoRepository ceoRepository) {
+//        this.ceoRepository = ceoRepository;
+//    }
+//    @GetMapping("/stores/{ceoId}")
+//    public String getStorePage(@PathVariable String ceoId, Model model) {
+//        Ceo ceo = ceoRepository.getWithRoles(ceoId)
+//                .orElseThrow(() -> new IllegalArgumentException("사장 아이디! : "+ ceoId));
+//        model.addAttribute("ceo", ceo);
+//        model.addAttribute("stores", ceo.getStores());
+//        return "storePage";
+//    }
 }
