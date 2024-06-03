@@ -42,10 +42,9 @@
         </form>
         <!-- 카카오톡 로그인 버튼 -->
         <button type="button" class="kakao-login-button">카카오 로그인</button>
-
-        <th:block th:if="${param.logout != null}">
-            <h1>로그아웃함</h1>
-        </th:block>
+        <script th:if="${param.error != null}">
+            alert("아이디 또는 비밀번호가 일치하지 않습니다.");
+        </script>
     </div>
 </div>
 </body>
