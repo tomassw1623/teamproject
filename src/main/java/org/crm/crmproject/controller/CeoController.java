@@ -65,6 +65,14 @@ public class CeoController {
         redirectAttributes.addAttribute("result", "success");
         return "redirect:/ceo/update";
     }
+
+    @PostMapping("/delete")
+    public void ceoDeletePost(@Valid CeoDTO ceoDTO, RedirectAttributes redirectAttributes) {
+
+        log.info("삭제삭제삭제삭제삭제삭제삭제삭제삭제삭제삭제삭제삭제삭제삭제삭제삭제삭제삭제");
+
+        ceoService.ceoDelete(ceoDTO);
+    }
 }
 
 

@@ -1,7 +1,6 @@
 package org.crm.crmproject.repository;
 
 import org.crm.crmproject.domain.Customer;
-import org.crm.crmproject.domain.Customer;
 import org.springframework.data.jpa.repository.EntityGraph;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Modifying;
@@ -27,5 +26,15 @@ public interface CustomerRepository extends JpaRepository<Customer, String> {
             "c.customerPhone = :re_phone, c.customerNick = :re_nick  where c.customerId = :customer_id")
     void updateCustomer(@Param("re_pw") String pw, @Param("re_name")String name, @Param("re_email")String email,
                    @Param("re_phone")String phone, @Param("re_nick")String nick, @Param("customer_id")String id );
+
+    // 비밀번호 가져오기
+    @Query("select c.customerPw from Customer c where c.customerId = :customerId")
+    String findCustomerPwByCustomerId(@Param("customerId") String customerId);
+
+    // db 삭제
+    @Modifying
+    @Transactional
+    @Query("delete from Customer m where m.customerId = :customerId")
+    void customerDelete(@Param("customerId") String customerId);
 
 }

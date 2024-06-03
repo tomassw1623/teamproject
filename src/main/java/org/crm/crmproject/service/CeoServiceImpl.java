@@ -7,17 +7,8 @@ import org.crm.crmproject.dto.CeoDTO;
 import org.crm.crmproject.repository.CeoRepository;
 import org.crm.crmproject.repository.CustomerRepository;
 import org.modelmapper.ModelMapper;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
-import org.springframework.web.multipart.MultipartFile;
-
-import java.io.IOException;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.nio.file.Paths;
-
-import static jakarta.persistence.GenerationType.UUID;
 
 @Service
 @RequiredArgsConstructor
@@ -59,6 +50,20 @@ public class CeoServiceImpl implements CeoService{
         ceoRepository.save(ceo);
     }
 
+    @Override
+    public void ceoDelete(CeoDTO ceoDTO) {
 
+        String ceoPw = ceoRepository.findCeoPwByCeoId(ceoDTO.getCeoId());
+
+        String rawPassword = ceoDTO.getCeoPw();
+
+        if (ceoPw != null && passwordEncoder.matches(rawPassword, ceoPw)) {
+
+            ceoRepository.ceoDelete(ceoDTO.getCeoId());
+        } else {
+
+            throw new IllegalArgumentException("비밀번호가 일치하지 않습니다.");
+        }
+    }
 
 }

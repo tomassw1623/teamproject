@@ -1,11 +1,6 @@
 package org.crm.crmproject.service;
 
-import org.crm.crmproject.domain.Ceo;
 import org.crm.crmproject.dto.CeoDTO;
-import org.crm.crmproject.dto.CustomerDTO;
-import org.springframework.web.multipart.MultipartFile;
-
-import java.io.IOException;
 
 public interface CeoService {
 
@@ -18,4 +13,6 @@ public interface CeoService {
     // 사장 회원가입 서비스
     void ceoJoin(CeoDTO ceoDTO) throws CeoService.MidExistException;
 
+    // 회원 탈퇴
+    void ceoDelete(CeoDTO ceoDTO);
 }
