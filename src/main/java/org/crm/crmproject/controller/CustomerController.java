@@ -6,7 +6,6 @@ import lombok.extern.log4j.Log4j2;
 import org.crm.crmproject.dto.CustomerDTO;
 import org.crm.crmproject.repository.CustomerRepository;
 import org.crm.crmproject.service.CustomerService;
-import org.springframework.security.core.Authentication;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -47,15 +46,15 @@ public class CustomerController {
     }
 
     //  로그인 시 고객 메인페이지로 이동
-    @GetMapping("/usermain")
+    @GetMapping("/main")
     public String customerMain() {
-        return "/customer/usermain";
+        return "/customer/main";
     }
 
     //  고객 마이페이지로 이동
-    @GetMapping("/usermypage")
+    @GetMapping("/my_page")
     public String customerMyPage() {
-        return "/customer/usermypage";
+        return "customer/my_page";
     }
 
 

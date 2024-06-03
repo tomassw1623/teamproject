@@ -38,12 +38,11 @@ public class CustomSecurityConfig {
 
         http.authorizeHttpRequests(authorize -> authorize // 권한 설정 부분
                         .requestMatchers("/").permitAll()
-                                        //static 메서드 접근
+                        .requestMatchers("/ceo/join","/customer/join").anonymous()
                         .requestMatchers(PathRequest.toStaticResources().atCommonLocations()).permitAll()
-                        .requestMatchers("/login", "/service", "/ceo/join", "/customer/join").permitAll()
                         .requestMatchers("/ceo/**").hasRole("CEO")
                         .requestMatchers("/customer/**").hasRole("CUSTOMER")
-                        .anyRequest().authenticated()
+                        .anyRequest().permitAll()
             )
             .formLogin(form ->{form.loginPage("/login") // 로그인 설정 부분
                 .loginProcessingUrl("/login")
@@ -59,16 +58,16 @@ public class CustomSecurityConfig {
 
                     if (isCustomer) {
                         System.out.println("authentication: " + authentication.getName());
-                        response.sendRedirect("/customer/usermain");
+                        response.sendRedirect("/customer/main");
                     } else if (isCeo) {
                         System.out.println("authentication: " + authentication.getName());
-                        response.sendRedirect("/ceo/ceomain");
+                        response.sendRedirect("/ceo/main");
                     }
                 }).permitAll();
             })
             .logout(logout -> logout    // 로그아웃 설정 부분
                         .logoutUrl("/logout")
-                        .logoutSuccessUrl("/index")
+                        .logoutSuccessUrl("/")
                         .permitAll()
             );
 
