@@ -27,6 +27,14 @@ function logout() {
     alert("로그아웃 되었습니다.");
 }
 
+function customerMyPage() {
+    window.location.href = "/customer/usermypage";
+}
+
+function  ceoMyPage() {
+    window.location.href = "/ceo/ceomypage";
+}
+
 function prevPage() {
     // 이전 페이지로 이동하는 기능을 여기에 추가하세요
     alert("이전 페이지로 이동합니다.");
@@ -49,8 +57,8 @@ document.addEventListener("DOMContentLoaded", function () {
                 },
             })
                 .then((response) => {
-                    if (response.ok) {
-                        window.location.href = "/login";
+                    if (response.ok) {  //  로그아웃 클릭 시 메인 페이지로 리다이렉트
+                        window.location.href = "templates/index.html";
                     } else {
                         alert("로그아웃 실패");
                     }
@@ -61,6 +69,11 @@ document.addEventListener("DOMContentLoaded", function () {
                 });
         });
 });
+
+document.getElementById("mypage").addEventListener("click", userMyPage);
+document.getElementById("myPageButton").addEventListener("click", ceoMyPage);
+
+
 document
     .getElementById("infoForm")
     .addEventListener("submit", function (event) {

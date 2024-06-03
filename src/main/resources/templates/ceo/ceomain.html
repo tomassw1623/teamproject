@@ -6,6 +6,7 @@
   <title>메인 페이지</title>
 <!--  <link rel="stylesheet" href="/resources/static/css/ceomain.css" />-->
   <link rel="stylesheet" th:href="@{/css/ceomain.css}" />
+  <script th:src="@{/js/script.js}" defer></script>
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
   <script defer>
     document.addEventListener("DOMContentLoaded", function () {
@@ -87,8 +88,8 @@
   <div class="header-left"></div>
   <div class="header-right">
     <img th:src="@{/uploadprofile/stoar.jpg}" alt="프로필 사진" class="profile-img" />
-    <button id="myPageButton" th:href="@{/myPage}">마이페이지</button>
-    <button id="logoutButton">로그아웃</button>
+    <button id="myPageButton" onclick="ceoMyPage()">마이페이지</button>
+    <button id="logoutButton" onclick="logout()">로그아웃</button>
   </div>
 </div>
 <div class="container">

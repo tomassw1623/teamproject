@@ -27,14 +27,13 @@
                             <label for="business-password">비밀번호</label>
                             <input type="password" id="business-password" name="ceoPw" />
                         </div>
-<!--                        <div class="form-group">-->
-<!--                            <label for="business-confirm-password">비밀번호 확인</label>-->
-<!--                            <input-->
-<!--                                    type="password"-->
-<!--                                    id="business-confirm-password"-->
-<!--                                    name="confirm-password"-->
-<!--                            />-->
-<!--                        </div>-->
+                        <div class="form-group">
+                            <label for="confirmPassword">비밀번호 확인</label>
+                            <input
+                                    type="password"
+                                    id="confirmPassword"
+                            />
+                        </div>
                         <div class="form-group">
                             <label for="business-name">이름</label>
                             <input type="text" id="business-name" name="ceoName" />
@@ -73,6 +72,18 @@
                 </div> <!-- end form-container active -->
                     <button type="submit">회원 가입</button>
                 </form>
+                <script>
+                    const form = document.getElementById('ceoJoin');
+                    form.addEventListener('submit', function(event) {
+                        const password = document.getElementById('business-password').value;
+                        const confirmPassword = document.getElementById('confirmPassword').value;
+
+                        if (password !== confirmPassword) {
+                            alert('비밀번호가 일치하지 않습니다.');
+                            event.preventDefault(); // 폼 제출 중단
+                        }
+                    });
+                </script>
         </div> <!-- end wrapper -->
     </div> <!-- end tabs -->
 

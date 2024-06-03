@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
 import java.util.UUID;
+import java.util.stream.IntStream;
 
 @SpringBootTest
 @Log4j2
@@ -31,4 +32,18 @@ public class BoardRepositoryTests {
 
         boardRepository.save(board);
     }
+
+//    @Test
+//    public void testInsert() {
+//        IntStream.rangeClosed(1, 50).forEach(i -> {
+//            Board board = Board.builder()
+//                    .content("test Content")
+//                    .writer("user"+i)
+//                    .build();
+//
+//            boardRepository.save(board);
+//        });
+//    }
+
+
 }

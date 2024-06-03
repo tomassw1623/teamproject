@@ -12,7 +12,7 @@
 <div class="container">
     <div class="header">고객 회원가입</div>
     <div class="form-wrapper">
-        <form id="registerForm" action="/customer/join" method="post">
+        <form id="cusJoin" action="/customer/join" method="post">
             <input type="hidden" name="roleSet" th:value="CUSTOMER">
  
             <!-- 유저 회원가입 -->
@@ -26,14 +26,13 @@
                     <label for="user-password">비밀번호</label>
                     <input type="password" id="user-password" name="customerPw" />
                 </div>
-<!--                <div class="form-group">-->
-<!--                    <label for="user-confirm-password">비밀번호 확인</label>-->
-<!--                    <input-->
-<!--                            type="password"-->
-<!--                            id="user-confirm-password"-->
-<!--                            name="confirm-password"-->
-<!--                    />-->
-<!--                </div>-->
+                <div class="form-group">
+                    <label for="confirmPassword">비밀번호 확인</label>
+                    <input
+                            type="password"
+                            id="confirmPassword"
+                    />
+                </div>
                 <div class="form-group">
                     <label for="user-name">이름</label>
                     <input type="text" id="user-name" name="customerName" />
@@ -73,6 +72,18 @@
                 <button type="submit">회원 가입</button>
             </div>
         </form>
+        <script>
+            const form = document.getElementById('cusJoin');
+            form.addEventListener('submit', function(event) {
+                const password = document.getElementById('user-password').value;
+                const confirmPassword = document.getElementById('confirmPassword').value;
+
+                if (password !== confirmPassword) {
+                    alert('비밀번호가 일치하지 않습니다.');
+                    event.preventDefault(); // 폼 제출 중단
+                }
+            });
+        </script>
     </div> <!-- end wrapper -->
 </div> <!--end container -->
 <!-- JavaScript 파일 링크 -->

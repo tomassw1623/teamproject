@@ -6,6 +6,7 @@ import lombok.extern.log4j.Log4j2;
 import org.crm.crmproject.dto.CustomerDTO;
 import org.crm.crmproject.repository.CustomerRepository;
 import org.crm.crmproject.service.CustomerService;
+import org.springframework.security.core.Authentication;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -45,6 +46,18 @@ public class CustomerController {
         return "redirect:/login";
     }
 
+    //  로그인 시 고객 메인페이지로 이동
+    @GetMapping("/usermain")
+    public String customerMain() {
+        return "/customer/usermain";
+    }
+
+    //  고객 마이페이지로 이동
+    @GetMapping("/usermypage")
+    public String customerMyPage() {
+        return "/customer/usermypage";
+    }
+
 
     @GetMapping("/update")
     public void customerUpdateGet(){
@@ -73,6 +86,7 @@ public class CustomerController {
 
         customerService.customerDelete(customerDTO);
     }
+
 }
 
 
