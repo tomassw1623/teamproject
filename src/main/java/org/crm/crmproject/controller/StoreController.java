@@ -1,20 +1,24 @@
 package org.crm.crmproject.controller;
 
 import org.crm.crmproject.domain.Ceo;
+import org.crm.crmproject.domain.Store;
 import org.crm.crmproject.repository.CeoRepository;
+import org.crm.crmproject.service.StoreService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @Controller
 @RequestMapping("/store")
 public class StoreController {
     private final CeoRepository ceoRepository;
+    private final StoreService storeService;
 
-    public StoreController(CeoRepository ceoRepository) {
+    public StoreController(CeoRepository ceoRepository, StoreService storeService) {
         this.ceoRepository = ceoRepository;
+        this.storeService = storeService;
     }
     @GetMapping("/{ceoId}")
     public String getStorePage(@PathVariable String ceoId, Model model) {
@@ -24,4 +28,18 @@ public class StoreController {
         model.addAttribute("store", ceo.getStore());
         return "/store/storePage";
     }
+    @PostMapping("/{ceoId}")
+    public String createEvent(@PathVariable String ceoId, @RequestParam String eventTitle,
+                              @RequestParam String eventContent) {
+        storeService.createEvent(ceoId, eventTitle, eventContent);
+        return "/store/"+ceoId;
+    }
+    @GetMapping("/{ceoId}2")
+    public String getEvent(@PathVariable String ceoId, Model model) {
+        List<Store> stores = storeService.getStoresByCeoId(ceoId);
+        model.addAttribute("stores", stores);
+        return "/store/event";
+
+    }
+
 }
