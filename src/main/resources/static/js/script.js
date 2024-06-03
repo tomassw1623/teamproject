@@ -28,11 +28,11 @@ function logout() {
 }
 
 function customerMyPage() {
-    window.location.href = "/customer/usermypage";
+    window.location.href = "/customer/cusmy_page";
 }
 
 function  ceoMyPage() {
-    window.location.href = "/ceo/ceomypage";
+    window.location.href = "/ceo/ceomy_page";
 }
 
 function prevPage() {
