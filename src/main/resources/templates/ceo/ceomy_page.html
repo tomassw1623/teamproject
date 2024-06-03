@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>마이 페이지</title>
 <!--    <link rel="stylesheet" href="/resources/static/css/usermypage.css" />-->
-    <link rel="stylesheet" th:href="@{/css/usermypage.css}" />
+    <link rel="stylesheet" th:href="@{/css/ceomypage.css}" />
     <script th:src="@{/js/script.js}" defer></script>
 </head>
 <body>
@@ -13,27 +13,23 @@
 <div class="header">
     <div class="header-left"></div>
     <div class="header-right">
-        <img
-                src="/resources/static/uploadprofile/user.jpg"
-                alt="프로필 사진"
-                class="profile-img"
-        />
-        <a href="/mypage" onclick="cusotmerMyPage()">마이페이지</a>
-        <a href="/logout" onclick="logout()">로그아웃</a>
+        <img th:src="@{/uploadprofile/stoar.jpg}" alt="프로필 사진" class="profile-img" />
+        <button id="myPageButton" onclick="ceoMyPage()">마이페이지</button>
+        <button id="logoutButton" onclick="logout()">로그아웃</button>
     </div>
 </div>
-<div class="container-wrapper">
-    <div class="container">
+<div class="container">
+    <div class="main-content">
         <div class="profile-section">
             <h2>프로필</h2>
             <img
-                    src="/resources/static/uploadprofile/user.jpg"
+                    th:src="@{/uploadprofile/stoar.jpg}"
                     alt="현재 프로필 사진"
                     class="current-profile-img"
             />
             <form
                     id="profileForm"
-                    action="/uploadProfile"
+                    action="/uploadprofile"
                     method="POST"
                     enctype="multipart/form-data"
             >
@@ -67,16 +63,37 @@
                         readonly
                 />
             </div>
+            <form id="infoForm" action="/updateInfo" method="POST">
+                <div class="form-group">
+                    <label for="store_address">가게 주소:</label>
+                    <input
+                            type="text"
+                            id="store_address"
+                            name="store_address"
+                            value="store_address"
+                    />
+                </div>
+                <button type="submit">수정</button>
+            </form>
+        </div>
+        <div class="store-info-section">
+            <h2>가게 정보 변경</h2>
+            <form id="storeInfoForm" action="/updateStoreInfo" method="POST">
+                <div class="form-group">
+              <textarea
+                      id="store_info"
+                      name="store_info"
+                      rows="10"
+                      maxlength="300"
+              ></textarea>
+                </div>
+                <button type="submit">수정</button>
+            </form>
             <div class="form-group">
-                <label for="nickname">닉네임:</label>
-                <input
-                        type="text"
-                        id="nickname"
-                        name="nickname"
-                        value="nickname_value"
-                />
+                <button onclick="location.href='/eventNotice'" class="event-button">
+                    이벤트 공지사항
+                </button>
             </div>
-            <button type="submit">수정</button>
         </div>
     </div>
 </div>
