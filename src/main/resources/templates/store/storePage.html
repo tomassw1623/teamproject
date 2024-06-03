@@ -9,7 +9,7 @@
 
 <!-- 매장 목록 -->
 <ul>
-    <li th:each="store : ${stores}">
+    <li th:each="store : ${store}">
         <h2 th:text="${store.name}">Store Name</h2>
         <p th:text="${store.description}">Store Description</p>
     </li>

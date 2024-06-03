@@ -38,8 +38,8 @@ public class Ceo {
 
     private String storeAddress;
 
-//    @OneToMany(mappedBy = "ceo")
-//    private List<store> stores;
+    @OneToOne(mappedBy = "ceo")
+    private Store store;
 
     // Ceo Entity 를 참조하는 roleSet table 생성용
     @ElementCollection(targetClass = Role.class, fetch = FetchType.LAZY)

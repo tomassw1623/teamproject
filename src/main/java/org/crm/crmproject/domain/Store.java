@@ -1,9 +1,6 @@
 package org.crm.crmproject.domain;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import lombok.*;
 
 @Entity
@@ -21,5 +18,9 @@ public class Store {
     private String eventTitle;  //  이벤트 글 제목
 
     private String eventContent;    //  이벤트 글 내용
+
+    @OneToOne
+    @JoinColumn(name= "ceo_ceoId")
+    private Ceo ceo;
 
 }
