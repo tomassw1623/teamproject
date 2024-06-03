@@ -55,5 +55,24 @@ public class CustomerRepositoryTests {
         customer.getRoleSet().forEach(role -> log.info(role.name()));
     }
 
+    @Test
+    public void testDelete() {
+
+        String customerPw = customerRepository.findCustomerPwByCustomerId("고객아이디5");
+
+        String rawPassword = "111342ㅁㄷㄴㅇㄹ11";
+
+        log.info("db비번 : " + customerPw);
+        log.info("입력한거 : " + rawPassword);
+
+        if (customerPw != null && passwordEncoder.matches(rawPassword, customerPw)) {
+
+            customerRepository.customerDelete("고객아이디5");
+        } else {
+
+            throw new IllegalArgumentException("비밀번호가 일치하지 않습니다.");
+        }
+    }
+
 
 }

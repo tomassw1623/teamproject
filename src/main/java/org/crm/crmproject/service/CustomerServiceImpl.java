@@ -17,7 +17,7 @@ import org.springframework.stereotype.Service;
 public class CustomerServiceImpl implements CustomerService{
 
     private final CeoRepository ceoRepository;
-     private final CustomerRepository customerRepository;
+    private final CustomerRepository customerRepository;
     private final ModelMapper modelMapper;
     private final PasswordEncoder passwordEncoder;
 
@@ -49,5 +49,21 @@ public class CustomerServiceImpl implements CustomerService{
 
         log.info("커스터머 가입 성공적");
 
+    }
+
+    @Override
+    public void customerDelete(CustomerDTO customerDTO) {
+
+        String customerPw = customerRepository.findCustomerPwByCustomerId(customerDTO.getCustomerId());
+
+        String rawPassword = customerDTO.getCustomerPw();
+
+        if (customerPw != null && passwordEncoder.matches(rawPassword, customerPw)) {
+
+            customerRepository.customerDelete(customerDTO.getCustomerId());
+        } else {
+
+            throw new IllegalArgumentException("비밀번호가 일치하지 않습니다.");
+        }
     }
 }

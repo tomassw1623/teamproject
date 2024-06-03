@@ -2,10 +2,8 @@ package org.crm.crmproject.Repository;
 
 import lombok.extern.log4j.Log4j2;
 import org.crm.crmproject.domain.Ceo;
-import org.crm.crmproject.domain.Customer;
 import org.crm.crmproject.domain.Role;
 import org.crm.crmproject.repository.CeoRepository;
-import org.crm.crmproject.repository.CustomerRepository;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -13,8 +11,6 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 
 import java.util.Optional;
 import java.util.stream.LongStream;
-
-import static org.crm.crmproject.domain.QCustomer.customer;
 
 @Log4j2
 @SpringBootTest
@@ -58,4 +54,25 @@ public class CeoRepositoryTests {
         ceo.getRoleSet().forEach(role -> log.info(role.name()));
     }
 
+    @Test
+    public void testDelete() {
+
+        String ceoPw = ceoRepository.findCeoPwByCeoId("사장아이디5");
+
+        String rawPassword = "1111";
+
+        log.info("db비번 : " + ceoPw);
+        log.info("입력한거 : " + rawPassword);
+
+        if (ceoPw != null && passwordEncoder.matches(rawPassword, ceoPw)) {
+
+            ceoRepository.ceoDelete("사장아이디5");
+
+        } else {
+
+            throw new IllegalArgumentException("비밀번호가 일치하지 않습니다.");
+        }
+
+        log.info("삭제테스트 완료");
+    }
 }

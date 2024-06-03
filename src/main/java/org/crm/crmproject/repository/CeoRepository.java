@@ -22,6 +22,18 @@ public interface CeoRepository extends JpaRepository<Ceo, String> {
     @Transactional
     @Query("update Ceo c set c.ceoPw = :re_pw, c.ceoName = :re_name, c.ceoEmail = :re_email, " +
             "c.ceoPhone = :re_phone, c.storeAddress = :re_address where c.ceoId = :ceo_id")
+
     void updateCeo(@Param("re_pw") String pw, @Param("re_name")String name, @Param("re_email")String email,
                    @Param("re_phone")String phone, @Param("re_address")String address, @Param("ceo_id")String id );
+
+    // 비밀번호 가져오기
+    @Query("select c.ceoPw from Ceo c where c.ceoId = :ceoId")
+    String findCeoPwByCeoId(@Param("ceoId") String ceoId);
+    
+    // db 삭제
+    @Modifying
+    @Transactional
+    @Query("delete from Ceo m where m.ceoId = :ceoId")
+    void ceoDelete(@Param("ceoId") String ceoId);
+    
 }

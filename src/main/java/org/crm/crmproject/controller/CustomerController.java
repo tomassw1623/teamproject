@@ -79,6 +79,13 @@ public class CustomerController {
         return "redirect:/customer/update";
     }
 
+    @PostMapping("/delete")
+    public void ceoDeletePost(@Valid CustomerDTO customerDTO, RedirectAttributes redirectAttributes) {
+
+        log.info("삭제삭제삭제삭제삭제삭제삭제삭제삭제삭제삭제삭제삭제삭제삭제삭제삭제삭제삭제");
+
+        customerService.customerDelete(customerDTO);
+    }
 
 }
 
