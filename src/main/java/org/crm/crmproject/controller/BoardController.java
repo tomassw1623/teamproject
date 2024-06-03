@@ -11,7 +11,6 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 @Log4j2
@@ -23,14 +22,14 @@ public class BoardController {
     private final BoardService boardService;
 
     //ceo 개인페이지 들어가기
-    @GetMapping("/ceomain")
+    @GetMapping("/ceo/main")
     public String GoCeoMain(){
-        return "ceo/ceomain";
+        return "/ceo/main";
     }
     ///유저페이지
-    @GetMapping("/cusmain")
-    public String GoCustMain(){
-        return "/customer/usermain";
+    @GetMapping("/customer/main")
+    public String GoCusMain(){
+        return "/customer/main";
     }
 
 

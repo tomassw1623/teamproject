@@ -6,7 +6,6 @@ import lombok.extern.log4j.Log4j2;
 import org.crm.crmproject.dto.CeoDTO;
 import org.crm.crmproject.repository.CeoRepository;
 import org.crm.crmproject.service.CeoService;
-import org.springframework.security.core.Authentication;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -33,7 +32,7 @@ public class CeoController {
     @PostMapping("/join")
     public String ceoJoinPost(CeoDTO ceoDTO, RedirectAttributes redirectAttributes) {
 
-        log.info("----- 고객이 가입하다 포스트방식 -----");
+        log.info("----- 사장이 가입하다 포스트방식 -----");
         log.info(ceoDTO);
 
         try {
@@ -47,15 +46,15 @@ public class CeoController {
     }
 
     //  로그인 시 사업자 메인페이지로 이동
-    @GetMapping("/ceomain")
+    @GetMapping("/main")
     public String ceoMain() {
-        return "/ceo/ceomain";
+        return "/ceo/main";
     }
 
     //  사업자 마이페이지 이동
-    @GetMapping("/ceomypage")
+    @GetMapping("/my_page")
     public String ceoMyPage() {
-        return "/ceo/ceomypage";
+        return "/ceo/my_page";
     }
 
 
