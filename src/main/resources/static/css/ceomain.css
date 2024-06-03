@@ -87,6 +87,28 @@ body {
     border-radius: 10%; /* 원형으로 설정 */
 }
 
+.button-container {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.half-button {
+    background-color: #00acc1;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    margin: 0 10px;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.3s;
+}
+
+.half-button:hover {
+    background-color: #00838f;
+    transform: translateY(-2px);
+}
+
 .menu-container {
     display: grid;
     grid-template-columns: repeat(4, 1fr); /* 4열 그리드 */
