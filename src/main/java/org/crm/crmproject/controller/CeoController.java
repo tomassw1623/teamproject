@@ -52,9 +52,9 @@ public class CeoController {
     }
 
     //  사업자 마이페이지 이동
-    @GetMapping("/my_page")
+    @GetMapping("/ceomy_page")
     public String ceoMyPage() {
-        return "/ceo/my_page";
+        return "/ceo/ceomy_page";
     }
 
 
@@ -89,7 +89,6 @@ public class CeoController {
     }
 
 }
-
 
 
 

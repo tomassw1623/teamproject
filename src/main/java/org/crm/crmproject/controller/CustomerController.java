@@ -54,7 +54,7 @@ public class CustomerController {
     //  고객 마이페이지로 이동
     @GetMapping("/my_page")
     public String customerMyPage() {
-        return "customer/my_page";
+        return "customermypage";
     }
 
 
