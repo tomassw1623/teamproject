@@ -57,6 +57,11 @@ public class CeoController {
         return "/ceo/ceomy_page";
     }
 
+    // 이벤트 글 이동
+    @GetMapping("/event")
+    public String ceoEvent() {
+        return "/ceo/event";
+    }
 
     @GetMapping("/update")
     public void ceoUpdateGet(){

@@ -90,5 +90,14 @@
         </div>
     </div>
 </div>
+<div class="store-info">
+    <h1>매장 정보</h1>
+    <ul>
+        <li th:each="store : ${stores}">
+            <h2 th:text="${store.eventTitle}">이벤트 제목</h2>
+            <p th:text="${store.eventContent}">이벤트 내용</p>
+        </li>
+    </ul>
+</div>
 </body>
 </html>

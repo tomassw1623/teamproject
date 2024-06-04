@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>이벤트 작성</title>
-    <link rel="stylesheet" th:href="@{/css/usermain.css}" />
+    <link rel="stylesheet" th:href="@{/css/event.css}" />
     <script th:src="@{/js/script.js}" defer></script>
 </head>
 <body>
@@ -12,7 +12,7 @@
     <div class="header-left"></div>
     <div class="header-right">
         <img
-                src="/resources/static/uploadprofile/stoar.jpg"
+                th:src="@{/uploadprofile/stoar.jpg}"
                 alt="프로필 사진"
                 class="profile-img"
         />
@@ -21,7 +21,7 @@
     </div>
 </div>
 <div class="container">
-    <form action="/store/{ceoId}" method="post" enctype="multipart/form-data">
+    <form th:action="@{/store/{ceoId}2(ceoId=${#authentication.principal.username})}" method="post" >
         <div class="form-group">
             <label for="title">제목</label>
             <input type="text" id="title" name="eventTitle" required />
@@ -32,11 +32,11 @@
         </div>
         <div class="form-group">
             <label for="image">이미지 파일 첨부</label>
-            <input type="file" id="image" name="image" />
+            <input type="file" id="image"  />
         </div>
         <div class="form-buttons">
             <button type="submit">글 등록하기</button>
-            <button type="button" onclick="window.location.href='/list'">
+            <button type="button" onclick="window.location.href='/main/board'">
                 목록 보기
             </button>
         </div>

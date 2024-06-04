@@ -26,6 +26,7 @@ public class StoreService {
                 .ceo(ceo)
                 .build();
         ceo.setStore(store);
+
         ceoRepository.save(ceo);
     }
 

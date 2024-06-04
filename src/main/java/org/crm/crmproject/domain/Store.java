@@ -8,7 +8,7 @@ import lombok.*;
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
-@ToString
+@ToString(exclude = "ceo")
 public class Store {
 
     @Id
@@ -20,7 +20,9 @@ public class Store {
     private String eventContent;    //  이벤트 글 내용
 
     @OneToOne
-    @JoinColumn(name= "ceo_ceoId")
+    @JoinColumn(name= "ceo_storeName", referencedColumnName = "storeName")
     private Ceo ceo;
+
+
 
 }

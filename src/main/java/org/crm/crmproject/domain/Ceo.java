@@ -39,7 +39,7 @@ public class Ceo {
 
     private String storeAddress;
 
-    @OneToOne(mappedBy = "ceo")
+    @OneToOne(mappedBy = "ceo", cascade = CascadeType.PERSIST)
     private Store store;
 
     // Ceo Entity 를 참조하는 roleSet table 생성용
@@ -54,6 +54,8 @@ public class Ceo {
     public void addRole(Role role) {
         this.roleSet.add(role);
     }
+
+
 
 //    @Entity
 //    public static class store{

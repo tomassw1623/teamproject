@@ -28,17 +28,17 @@ public class StoreController {
         model.addAttribute("store", ceo.getStore());
         return "/store/storePage";
     }
-    @PostMapping("/{ceoId}")
+    @PostMapping("/{ceoId}2")
     public String createEvent(@PathVariable String ceoId, @RequestParam String eventTitle,
                               @RequestParam String eventContent) {
         storeService.createEvent(ceoId, eventTitle, eventContent);
-        return "/store/"+ceoId;
+        return "redirect:/";
     }
     @GetMapping("/{ceoId}2")
     public String getEvent(@PathVariable String ceoId, Model model) {
         List<Store> stores = storeService.getStoresByCeoId(ceoId);
         model.addAttribute("stores", stores);
-        return "/store/event";
+        return "redirect:/";
 
     }
 
