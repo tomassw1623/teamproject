@@ -2,6 +2,7 @@ package org.crm.crmproject.domain;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -23,7 +24,7 @@ public class Menu {
     private Long Menu_price;
 
     @ManyToOne
-    private Ceo ceo_No;
+    private Ceo ceo;
 
 
 }
