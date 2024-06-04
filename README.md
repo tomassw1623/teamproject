@@ -1,5 +1,14 @@
 # CRM Project
-요식업 web과 사업자의 판매량,방문수 통계치를 내는 사이트 개발
+>리뷰를 남길수 있으며 사장님의 계정으로는 자기 음식점에 판매량,추이,통계를 확인가능한 웹사이트 개발
+
+---
+개발에 사용한 것들
+- Java JDK17
+- InteliJ
+- VScode
+- Swagger
+- PostMan
+- SpringBoot
 
 # ERD
-<img width="1080" alt="image" src="https://github.com/tomassw1623/teamproject/assets/162404075/67574791-f0e5-4015-aab6-e1a8e06bed61">
+<img width="1240" alt="image" src="https://github.com/tomassw1623/teamproject/assets/162404075/beef2232-9443-45ee-85d9-e61957ffe4fb">
