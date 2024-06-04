@@ -31,7 +31,7 @@ function customerMyPage() {
     window.location.href = "/customer/cusmy_page";
 }
 
-function  ceoMyPage() {
+function ceoMyPage() {
     window.location.href = "/ceo/ceomy_page";
 }
 
@@ -70,7 +70,7 @@ document.addEventListener("DOMContentLoaded", function () {
         });
 });
 
-document.getElementById("mypage").addEventListener("click", userMyPage);
+document.getElementById("myPageButton").addEventListener("click", customerMyPage);
 document.getElementById("myPageButton").addEventListener("click", ceoMyPage);
 
 
