@@ -22,31 +22,40 @@
 <div class="container">
   <!-- 가게 선택 버튼들 -->
   <div class="store-buttons">
-    <button onclick="location.href='/store/1'">
+    <button data-ceo-No="ceo1">
       <img th:src="@{/images/ham.png}" alt="가게 1 이미지" /><br />
       가게 1
     </button>
-    <button onclick="location.href='/store/2'">
+    <button data-ceo-No="ceo2">
       <img th:src="@{/images/ham.png}" alt="가게 2 이미지" /><br />
       가게 2
     </button>
-    <button onclick="location.href='/store/3'">
+    <button data-ceo-No="ceo3">
       <img th:src="@{/images/ham.png}" alt="가게 3 이미지" /><br />
       가게 3
     </button>
-    <button onclick="location.href='/store/4'">
+    <button data-ceo-No="ceo4">
       <img th:src="@{/images/ham.png}" alt="가게 4 이미지" /><br />
       가게 4
     </button>
-    <button onclick="location.href='/store/5'">
+    <button data-ceo-No="ceo5">
       <img th:src="@{/images/ham.png}" alt="가게 5 이미지" /><br />
       가게 5
     </button>
-    <button onclick="location.href='/store/6'">
+    <button data-ceo-No="ceo6">
       <img th:src="@{/images/ham.png}" alt="가게 6 이미지" /><br />
       가게 6
     </button>
   </div>
+  <!-- 가게 누르면 나오는 페이지 -->
+  <script>
+    document.querySelectorAll('.store-buttons button').forEach(button => {
+      button.addEventListener('click', () => {
+        const ceoId = button.getAttribute('data-ceo-No');
+        window.location.href = `/store/${ceoId}`;
+      });
+    });
+  </script>
   <!-- 게시판 섹션 -->
   <div class="board">
     <h2>이벤트 소식</h2>
