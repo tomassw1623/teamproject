@@ -34,12 +34,12 @@ public class StoreController {
         storeService.createEvent(ceoId, eventTitle, eventContent);
         return "redirect:/";
     }
-    @GetMapping("/{ceoId}2")
-    public String getEvent(@PathVariable String ceoId, Model model) {
-        List<Store> stores = storeService.getStoresByCeoId(ceoId);
-        model.addAttribute("stores", stores);
-        return "redirect:/";
-
-    }
+//    @GetMapping("/{ceoId}2")
+//    public String getEvent(@PathVariable String ceoId, Model model) {
+//        List<Store> stores = storeService.getStoresByCeoId(ceoId);
+//        model.addAttribute("stores", stores);
+//        return "redirect:/";
+//
+//    }
 
 }
