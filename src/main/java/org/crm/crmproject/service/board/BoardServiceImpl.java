@@ -1,4 +1,4 @@
-package org.crm.crmproject.service;
+package org.crm.crmproject.service.board;
 
 import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
@@ -8,7 +8,6 @@ import org.crm.crmproject.dto.BoardDTO;
 import org.crm.crmproject.repository.BoardRepository;
 import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Service;
-import org.springframework.web.multipart.MultipartFile;
 
 import java.util.Optional;
 

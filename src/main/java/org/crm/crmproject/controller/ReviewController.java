@@ -5,34 +5,26 @@ import lombok.extern.log4j.Log4j2;
 import org.crm.crmproject.domain.Customer;
 import org.crm.crmproject.domain.Review;
 import org.crm.crmproject.dto.CustomerDTO;
+import org.crm.crmproject.dto.ReviewDTO;
 import org.crm.crmproject.repository.CustomerRepository;
 import org.crm.crmproject.repository.ReviewRepository;
+import org.crm.crmproject.service.review.ReviewService;
 import org.modelmapper.ModelMapper;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
-@Controller
+@RestController
 @Log4j2
 @RequiredArgsConstructor
-@RequestMapping("/star")
+@RequestMapping("/reviews")
 public class ReviewController {
 
-//    @Autowired
-//    private ReviewRepository reviewRepository;
-//
-//    @GetMapping("/review")
-//    public String goReview() {
-//        return "/star/review";
-//    }
-//
-//    @ResponseBody
-//    @PostMapping("/review")
-//    public Review saveReview(@RequestBody Review review){
-//        return reviewRepository.save(review);
-//    }
+    private final ReviewService reviewService;
 
 
 }

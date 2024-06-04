@@ -2,7 +2,7 @@ package org.crm.crmproject.Repository;
 
 import lombok.extern.log4j.Log4j2;
 import org.crm.crmproject.dto.BoardDTO;
-import org.crm.crmproject.service.BoardService;
+import org.crm.crmproject.service.board.BoardService;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;

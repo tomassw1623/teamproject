@@ -1,4 +1,4 @@
-package org.crm.crmproject.service;
+package org.crm.crmproject.service.member;
 
 import org.crm.crmproject.dto.CustomerDTO;
 
