@@ -1,8 +1,7 @@
-package org.crm.crmproject.Repository.Menu;
+package org.crm.crmproject.Repository.SaleAndMenu;
 
 import org.crm.crmproject.domain.Ceo;
 import org.crm.crmproject.domain.Menu;
-import org.crm.crmproject.repository.CeoRepository;
 import org.crm.crmproject.repository.CeoRepository_LongType;
 import org.crm.crmproject.repository.MenuRepository;
 import org.junit.jupiter.api.Test;
