@@ -3,9 +3,8 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>마이 페이지</title>
-    <!--    <link rel="stylesheet" href="/resources/static/css/usermypage.css" />-->
-    <link rel="stylesheet" th:href="@{/css/ceomypage.css}" />
+    <title>메인 페이지</title>
+    <link rel="stylesheet" th:href="@{/css/usermain.css}" />
     <script th:src="@{/js/script.js}" defer></script>
 </head>
 <body>
@@ -13,87 +12,59 @@
 <div class="header">
     <div class="header-left"></div>
     <div class="header-right">
-        <img th:src="@{/uploadprofile/stoar.jpg}" alt="프로필 사진" class="profile-img" />
-        <button id="myPageButton" onclick="ceoMyPage()">마이페이지</button>
+        <img th:src="@{/uploadprofile/user.jpg}" alt="프로필 사진" class="profile-img" />
+        <button id="mypage" onclick="customerMyPage()">마이페이지</button>
         <button id="logoutButton" onclick="logout()">로그아웃</button>
     </div>
 </div>
+
+<!-- 메인 컨테이너 -->
 <div class="container">
-    <div class="main-content">
-        <div class="profile-section">
-            <h2>프로필</h2>
-            <img
-                    th:src="@{/uploadprofile/stoar.jpg}"
-                    alt="현재 프로필 사진"
-                    class="current-profile-img"
-            />
-            <form
-                    id="profileForm"
-                    action="/uploadprofile"
-                    method="POST"
-                    enctype="multipart/form-data"
-            >
-                <div class="form-group">
-                    <label for="profile_picture">프로필 사진:</label>
-                    <input type="file" id="profile_picture" name="profile_picture" />
-                </div>
-                <button type="submit">저장</button>
-            </form>
-            <div class="form-group">
-                <label for="id">ID:</label>
-                <input type="text" id="id" name="id" th:value="${#authentication.principal.username}" readonly />
-            </div>
-            <div class="form-group">
-                <label for="name">이름:</label>
-                <input
-                        type="text"
-                        id="name"
-                        name="name"
-                        th:value="${#authentication.principal.ceoName}"
-                        readonly
-                />
-            </div>
-            <div class="form-group">
-                <label for="email">이메일:</label>
-                <input
-                        type="email"
-                        id="email"
-                        name="email"
-                        th:value="${#authentication.principal.ceoEmail}"
-                        readonly
-                />
-            </div>
-            <form id="infoForm" action="/updateInfo" method="POST">
-                <div class="form-group">
-                    <label for="store_address">가게 주소:</label>
-                    <input
-                            type="text"
-                            id="store_address"
-                            name="store_address"
-                            th:value="${#authentication.principal.storeAddress}"
-                    />
-                </div>
-                <button type="submit">수정</button>
-            </form>
+    <!-- 가게 선택 버튼들 -->
+    <div class="store-buttons">
+        <button data-ceo-No="ceo1">
+            <img th:src="@{/images/ham.png}" alt="가게 1 이미지" /><br />
+            가게 1
+        </button>
+        <button data-ceo-No="ceo2">
+            <img th:src="@{/images/ham.png}" alt="가게 2 이미지" /><br />
+            가게 2
+        </button>
+        <button data-ceo-No="ceo3">
+            <img th:src="@{/images/ham.png}" alt="가게 3 이미지" /><br />
+            가게 3
+        </button>
+        <button data-ceo-No="ceo4">
+            <img th:src="@{/images/ham.png}" alt="가게 4 이미지" /><br />
+            가게 4
+        </button>
+        <button data-ceo-No="ceo5">
+            <img th:src="@{/images/ham.png}" alt="가게 5 이미지" /><br />
+            가게 5
+        </button>
+        <button data-ceo-No="ceo6">
+            <img th:src="@{/images/ham.png}" alt="가게 6 이미지" /><br />
+            가게 6
+        </button>
+    </div>
+    <!-- 가게 누르면 나오는 페이지 -->
+    <script>
+        document.querySelectorAll('.store-buttons button').forEach(button => {
+            button.addEventListener('click', () => {
+                const ceoId = button.getAttribute('data-ceo-No');
+                window.location.href = `/store/${ceoId}`;
+            });
+        });
+    </script>
+    <!-- 게시판 섹션 -->
+    <div class="board">
+        <h2>이벤트 소식</h2>
+        <div class="board-content">
+            <!-- 게시글 섹션 (나중에 추가될 게시글들) -->
         </div>
-        <div class="store-info-section">
-            <h2>가게 정보 변경</h2>
-            <form id="storeInfoForm" action="/updateStoreInfo" method="POST">
-                <div class="form-group">
-              <textarea
-                      id="store_info"
-                      name="store_info"
-                      rows="10"
-                      maxlength="300"
-              ></textarea>
-                </div>
-                <button type="submit">수정</button>
-            </form>
-            <div class="form-group">
-                <button onclick="location.href='/eventNotice'" class="event-button">
-                    이벤트 공지사항
-                </button>
-            </div>
+        <div class="pagination">
+            <button onclick="prevPage()">이전</button>
+            <button onclick="nextPage()">다음</button>
         </div>
     </div>
 </div>

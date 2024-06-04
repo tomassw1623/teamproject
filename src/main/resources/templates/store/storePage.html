@@ -8,4 +8,64 @@
 <h1 th:text="${ceo.storeName} + '의 매장'">Store List</h1>
 
 </body>
+</html><!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>가게 정보</title>
+    <link rel="stylesheet" th:href="@{/css/store.css}" />
+    <!--    <link rel="stylesheet" href="/resources/static/css/store.css" />-->
+    <script th:src="@{/js/script.js}" defer></script>
+</head>
+<body>
+<!-- 헤더 섹션 -->
+<div class="header">
+    <div class="header-left"></div>
+    <div class="header-right">
+        <img
+                th:src="@{/uploadprofile/user.jpg}"
+                alt="프로필 사진"
+                class="profile-img"
+        />
+        <button id="myPageButton" onclick="customerMyPage()">마이페이지</button>
+        <button id="logoutButton" onclick="logout()">로그아웃</button>
+    </div>
+</div>
+<div class="container">
+    <h1 th:text="${ceo.storeName} + '의 매장'">Store List</h1>
+    <div class="profile-section">
+        <img
+                th:src="@{/uploadprofile/stoar.jpg}"
+                alt="가게 프로필"
+                class="profile-img"
+        />
+        <!--        <div class="store-rating">-->
+        <!--          <span class="stars">-->
+        <!--            <span th:utext="'★'.repeat(${averageRating})">★</span>-->
+        <!--            <span th:utext="'☆'.repeat(5 - ${averageRating})">☆</span>-->
+        <!--          </span>-->
+        <!--            <span class="average-rating" th:text="${averageRating}">3.5</span>-->
+        <!--        </div>-->
+    </div>
+    <div class="info-section">
+        <h2>가게 정보</h2>
+        <div class="store-info">
+            <p th:text="${storeInfo}">여기에 가게 정보가 표시됩니다.</p>
+        </div>
+    </div>
+    <div class="review-board">
+        <h2>리뷰 게시글</h2>
+        <div class="reviews">
+            <div th:each="review : ${reviews}" class="review-item">
+                <h3 th:text="${review.title}">리뷰 제목</h3>
+                <p th:text="${review.content}">리뷰 내용이 여기에 표시됩니다.</p>
+            </div>
+        </div>
+    </div>
+    <div class="write-review">
+        <button onclick="location.href='/writeReview'">리뷰 쓰기</button>
+    </div>
+</div>
+</body>
 </html>
