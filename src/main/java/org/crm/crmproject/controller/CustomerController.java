@@ -5,7 +5,7 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
 import org.crm.crmproject.dto.CustomerDTO;
 import org.crm.crmproject.repository.CustomerRepository;
-import org.crm.crmproject.service.CustomerService;
+import org.crm.crmproject.service.member.CustomerService;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;

@@ -8,11 +8,12 @@ import lombok.*;
 @NoArgsConstructor
 public class ReviewDTO {
 
-    private Long rn;
+    private Long reviewNo;
 
-    private String review;
+    private String reviewText;
 
-    private int star;
+    private int grade;
+
 
 
 }
