@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>마이 페이지</title>
-<!--    <link rel="stylesheet" href="/resources/static/css/usermypage.css" />-->
+    <!--    <link rel="stylesheet" href="/resources/static/css/usermypage.css" />-->
     <link rel="stylesheet" th:href="@{/css/usermypage.css}" />
     <script th:src="@{/js/script.js}" defer></script>
 </head>
@@ -14,12 +14,12 @@
     <div class="header-left"></div>
     <div class="header-right">
         <img
-                src="/resources/static/uploadprofile/user.jpg"
+                th:src="@{/uploadprofile/user.jpg}"
                 alt="프로필 사진"
                 class="profile-img"
         />
-        <a href="/mypage" onclick="customerMyPage()">마이페이지</a>
-        <a href="/logout" onclick="logout()">로그아웃</a>
+        <button id="myPageButton" onclick="customerMyPage()">마이페이지</button>
+        <button id="logoutButton" onclick="logout()">로그아웃</button>
     </div>
 </div>
 <div class="container-wrapper">
@@ -27,7 +27,7 @@
         <div class="profile-section">
             <h2>프로필</h2>
             <img
-                    src="/resources/static/uploadprofile/user.jpg"
+                    th:src="@{/uploadprofile/user.jpg}"
                     alt="현재 프로필 사진"
                     class="current-profile-img"
             />
@@ -45,7 +45,7 @@
             </form>
             <div class="form-group">
                 <label for="id">ID:</label>
-                <input type="text" id="id" name="id" value="user_id" readonly />
+                <input type="text" id="id" name="id" th:value="${#authentication.principal.username}" readonly />
             </div>
             <div class="form-group">
                 <label for="name">이름:</label>
@@ -53,7 +53,7 @@
                         type="text"
                         id="name"
                         name="name"
-                        value="user_name"
+                        th:value="${#authentication.principal.customerName}"
                         readonly
                 />
             </div>
@@ -63,7 +63,7 @@
                         type="email"
                         id="email"
                         name="email"
-                        value="user_email"
+                        th:value="${#authentication.principal.customerEmail}"
                         readonly
                 />
             </div>
@@ -73,7 +73,7 @@
                         type="text"
                         id="nickname"
                         name="nickname"
-                        value="nickname_value"
+                        th:value="${#authentication.principal.customerNick}"
                 />
             </div>
             <button type="submit">수정</button>
