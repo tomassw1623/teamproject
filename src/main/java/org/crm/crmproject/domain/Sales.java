@@ -26,5 +26,4 @@ public class Sales {
 
     @OneToOne
     private Menu menu;
-
 }

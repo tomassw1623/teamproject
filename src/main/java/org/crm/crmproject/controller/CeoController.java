@@ -3,15 +3,19 @@ package org.crm.crmproject.controller;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
+import org.crm.crmproject.domain.Menu;
 import org.crm.crmproject.dto.CeoDTO;
 import org.crm.crmproject.repository.CeoRepository;
-import org.crm.crmproject.service.member.CeoService;
+ 
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
+
+import java.util.List;
 
 @Controller
 @RequestMapping("/ceo")
@@ -22,6 +26,7 @@ public class CeoController {
     private final CeoService ceoService;
     private final CeoRepository ceoRepository;
     private final PasswordEncoder passwordEncoder;
+    private final MenuRepository menuRepository;
 
     //  사장 회원가입
     @GetMapping("/join")
@@ -92,6 +97,15 @@ public class CeoController {
 
         ceoService.ceoDelete(ceoDTO);
     }
+
+    //그래프작업을 위해서 이곳에 컨트롤러를 작성합니다
+    @GetMapping("/mainPage")
+    public String mainPage(Model model){
+        List<Menu> menus = menuRepository.findAll();
+        model.addAttribute("menus",menus);
+        return "/ceo/main";
+    }
+
 
 }
 

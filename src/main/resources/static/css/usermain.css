@@ -11,7 +11,7 @@ body {
     justify-content: space-between;
     align-items: center;
     padding: 10px 20px;
-    background-color: #00acc1; /* 헤더 배경 하늘색 */
+    background-color: #5fbebb; /* 헤더 배경 하늘색 */
     border-bottom: 2px solid #00838f; /* 진한 하늘색 경계선 */
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* 헤더에 그림자 추가 */
 }
