@@ -1,11 +1,9 @@
-package org.crm.crmproject.service;
+package org.crm.crmproject.service.board;
 
 import org.crm.crmproject.domain.Board;
 import org.crm.crmproject.dto.BoardDTO;
-import org.springframework.web.multipart.MultipartFile;
 
 import java.util.List;
-import java.util.stream.Collectors;
 
 public interface BoardService {
 

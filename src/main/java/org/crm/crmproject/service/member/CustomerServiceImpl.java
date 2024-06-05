@@ -1,4 +1,4 @@
-package org.crm.crmproject.service;
+package org.crm.crmproject.service.member;
 
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
