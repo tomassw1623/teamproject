@@ -4,123 +4,14 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>메인 페이지</title>
-<!--  <link rel="stylesheet" href="/resources/static/css/ceomain.css" />-->
   <link rel="stylesheet" th:href="@{/css/ceomain.css}" />
-  <script th:src="@{/js/script.js}" defer></script>
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-  <script defer>
-    document.addEventListener("DOMContentLoaded", function () {
-      var barCtx = document.getElementById("barGraph").getContext("2d");
-      var pieCtx = document.getElementById("pieChart").getContext("2d");
-
-      var monthlySales = [
-        2000000, 1900000, 3000000, 2500000, 2100000, 0, 0, 0, 0, 0, 0, 0,
-      ]; // 월별 매출 초기값
-      var menuSales = { 1: 0, 2: 0, 3: 0, 4: 0, 5: 0, 6: 0, 7: 0, 8: 0 }; // 메뉴별 판매 수량 초기값
-
-      var barChart = new Chart(barCtx, {
-        type: "bar",
-        data: {
-          labels: ["1월", "2월", "3월", "4월", "5월", "6월"],
-          datasets: [
-            {
-              label: "전반기",
-              data: monthlySales.slice(0, 6),
-              backgroundColor: "rgba(75, 192, 192, 0.2)",
-              borderColor: "rgba(75, 192, 192, 1)",
-              borderWidth: 1,
-            },
-          ],
-        },
-        options: {
-          scales: {
-            y: {
-              beginAtZero: true,
-            },
-          },
-        },
-      });
-
-      var pieChart = new Chart(pieCtx, {
-        type: "pie",
-        data: {
-          labels: [
-            "세트 1",
-            "세트 2",
-            "세트 3",
-            "세트 4",
-            "세트 5",
-            "세트 6",
-            "세트 7",
-            "세트 8",
-          ],
-          datasets: [
-            {
-              label: "Popular Sets",
-              data: Object.values(menuSales),
-              backgroundColor: [
-                "rgba(255, 99, 132, 0.2)",
-                "rgba(54, 162, 235, 0.2)",
-                "rgba(255, 206, 86, 0.2)",
-                "rgba(75, 192, 192, 0.2)",
-                "rgba(153, 102, 255, 0.2)",
-                "rgba(255, 159, 64, 0.2)",
-                "rgba(199, 199, 199, 0.2)",
-                "rgba(83, 102, 255, 0.2)",
-              ],
-              borderColor: [
-                "rgba(255, 99, 132, 1)",
-                "rgba(54, 162, 235, 1)",
-                "rgba(255, 206, 86, 1)",
-                "rgba(75, 192, 192, 1)",
-                "rgba(153, 102, 255, 1)",
-                "rgba(255, 159, 64, 1)",
-                "rgba(199, 199, 199, 1)",
-                "rgba(83, 102, 255, 1)",
-              ],
-              borderWidth: 1,
-            },
-          ],
-        },
-      });
-
-      window.updateGraphs = function (menu) {
-        var currentMonth = new Date().getMonth();
-        monthlySales[currentMonth] += 9000;
-        barChart.data.datasets[0].data =
-                currentMonth < 6
-                        ? monthlySales.slice(0, 6)
-                        : monthlySales.slice(6, 12);
-        barChart.update();
-
-        menuSales[menu]++;
-        pieChart.data.datasets[0].data = Object.values(menuSales);
-        pieChart.update();
-      };
-
-      window.showFirstHalf = function () {
-        barChart.data.labels = ["1월", "2월", "3월", "4월", "5월", "6월"];
-        barChart.data.datasets[0].data = monthlySales.slice(0, 6);
-        barChart.update();
-      };
-
-      window.showSecondHalf = function () {
-        barChart.data.labels = ["7월", "8월", "9월", "10월", "11월", "12월"];
-        barChart.data.datasets[0].data = monthlySales.slice(6, 12);
-        barChart.update();
-      };
-    });
-  </script>
 </head>
 <body>
 <div class="header">
   <div class="header-left"></div>
   <div class="header-right">
-    <img
-            th:src="@{/uploadprofile/stoar.jpg}"
-            alt="프로필 사진"
-            class="profile-img"
-    />
+    <img th:src="@{/uploadprofile/stoar.jpg}" alt="프로필 사진" class="profile-img" />
     <button id="myPageButton" onclick="ceoMyPage()">마이페이지</button>
     <button id="logoutButton" onclick="logout()">로그아웃</button>
   </div>
@@ -140,32 +31,107 @@
       <button class="half-button" onclick="showSecondHalf()">후반기</button>
     </div>
     <div class="menu-container">
-      <button class="menu-button" onclick="updateGraphs(1)">
-        햄버거 세트1 [9000원]
-      </button>
-      <button class="menu-button" onclick="updateGraphs(2)">
-        햄버거 세트2 [9000원]
-      </button>
-      <button class="menu-button" onclick="updateGraphs(3)">
-        햄버거 세트3 [9000원]
-      </button>
-      <button class="menu-button" onclick="updateGraphs(4)">
-        햄버거 세트4 [9000원]
-      </button>
-      <button class="menu-button" onclick="updateGraphs(5)">
-        햄버거 세트5 [9000원]
-      </button>
-      <button class="menu-button" onclick="updateGraphs(6)">
-        햄버거 세트6 [9000원]
-      </button>
-      <button class="menu-button" onclick="updateGraphs(7)">
-        햄버거 세트7 [9000원]
-      </button>
-      <button class="menu-button" onclick="updateGraphs(8)">
-        햄버거 세트8 [9000원]
-      </button>
+      <th:block th:each="menu : ${menus}">
+        <button class="menu-button" th:onclick="'updateGraphs(' + ${menu.menu_id} + ')'">
+          <span th:text="${menu.menu_name}"></span>[<span th:text="${menu.Menu_price}"></span>원]
+        </button>
+      </th:block>
     </div>
   </div>
 </div>
+<script th:src="@{/js/script.js}" defer></script>
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    var barCtx = document.getElementById("barGraph").getContext("2d");
+    var pieCtx = document.getElementById("pieChart").getContext("2d");
+
+    var monthlySales = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
+    var menuSales = { 1: 0, 2: 0, 3: 0, 4: 0, 5: 0, 6: 0, 7: 0, 8: 0 };
+
+    var barChart = new Chart(barCtx, {
+      type: "bar",
+      data: {
+        labels: ["1월", "2월", "3월", "4월", "5월", "6월"],
+        datasets: [
+          {
+            label: "전반기",
+            data: monthlySales.slice(0, 6),
+            backgroundColor: "rgba(75, 192, 192, 0.2)",
+            borderColor: "rgba(75, 192, 192, 1)",
+            borderWidth: 1,
+          },
+        ],
+      },
+      options: {
+        scales: {
+          y: {
+            beginAtZero: true,
+          },
+        },
+      },
+    });
+
+    var pieChart = new Chart(pieCtx, {
+      type: "pie",
+      data: {
+        labels: ["세트 1", "세트 2", "세트 3", "세트 4", "세트 5", "세트 6", "세트 7", "세트 8"],
+        datasets: [
+          {
+            label: "Popular Sets",
+            data: Object.values(menuSales),
+            backgroundColor: [
+              "rgba(255, 99, 132, 0.2)",
+              "rgba(54, 162, 235, 0.2)",
+              "rgba(255, 206, 86, 0.2)",
+              "rgba(75, 192, 192, 0.2)",
+              "rgba(153, 102, 255, 0.2)",
+              "rgba(255, 159, 64, 0.2)",
+              "rgba(199, 199, 199, 0.2)",
+              "rgba(83, 102, 255, 0.2)",
+            ],
+            borderColor: [
+              "rgba(255, 99, 132, 1)",
+              "rgba(54, 162, 235, 1)",
+              "rgba(255, 206, 86, 1)",
+              "rgba(75, 192, 192, 1)",
+              "rgba(153, 102, 255, 1)",
+              "rgba(255, 159, 64, 1)",
+              "rgba(199, 199, 199, 1)",
+              "rgba(83, 102, 255, 1)",
+            ],
+            borderWidth: 1,
+          },
+        ],
+      },
+    });
+
+    window.updateGraphs = function (menuId) {
+      fetch('/sales/' + menuId)
+        .then(response => response.json())
+        .then(sales => {
+          var currentMonth = new Date().getMonth();
+          monthlySales[currentMonth] += sales.length * 9000;
+          barChart.data.datasets[0].data = monthlySales.slice(0, 6);
+          barChart.update();
+
+          menuSales[menuId] = sales.length;
+          pieChart.data.datasets[0].data = Object.values(menuSales);
+          pieChart.update();
+        });
+    };
+
+    window.showFirstHalf = function () {
+      barChart.data.labels = ["1월", "2월", "3월", "4월", "5월", "6월"];
+      barChart.data.datasets[0].data = monthlySales.slice(0, 6);
+      barChart.update();
+    };
+
+    window.showSecondHalf = function () {
+      barChart.data.labels = ["7월", "8월", "9월", "10월", "11월", "12월"];
+      barChart.data.datasets[0].data = monthlySales.slice(6, 12);
+      barChart.update();
+    };
+  });
+</script>
 </body>
 </html>

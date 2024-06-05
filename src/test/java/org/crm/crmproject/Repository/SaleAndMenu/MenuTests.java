@@ -18,12 +18,13 @@ public class MenuTests {
     private CeoRepository_LongType ceoRepository_longType;
 
 
-
+        //ceo 가입하고 하면 값이 들어갑니다
+    //레파지토리는 ceo no 을 가지고오고싶어서 다시 만들었습니다
     @Test
     public void insertTest(){
         Ceo ceo = ceoRepository_longType.findById(1L).orElse(null);//
         Menu menu = Menu.builder()
-                .Menu_price(200L).menu_name("파스타").menu_id(1L).ceo(ceo).
+                .Menu_price(10000L).menu_name("라면").menu_id(2L).ceo(ceo).
                 build();
 
         menuRepository.save(menu);

@@ -11,8 +11,8 @@ body {
     justify-content: space-between;
     align-items: center;
     padding: 10px 20px;
-    background-color: #00acc1; /* 헤더 배경 하늘색 */
-    border-bottom: 2px solid #00838f; /* 진한 하늘색 경계선 */
+    background-color: #5fbebb; /* 헤더 배경 하늘색 */
+    border-bottom: 2px solid #5fbebb; /* 진한 하늘색 경계선 */
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* 헤더에 그림자 추가 */
 }
 
@@ -73,7 +73,7 @@ body {
 }
 
 .graph {
-    background-color: #b2ebf2; /* 그래프 배경색 */
+    background-color: rgba(255, 255, 255, 0); /* 그래프 배경색 */
     display: flex;
     justify-content: center;
     align-items: center;
@@ -93,7 +93,7 @@ body {
 }
 
 .half-button {
-    background-color: #00acc1;
+    background-color: #5fbebb;
     color: white;
     border: none;
     padding: 10px 20px;
@@ -105,7 +105,7 @@ body {
 }
 
 .half-button:hover {
-    background-color: #00838f;
+    background-color: #5fbebc;
     transform: translateY(-2px);
 }
 
