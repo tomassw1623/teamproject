@@ -23,7 +23,10 @@ window.onload = function () {
 };
 
 function logout() {
-    // 여기에 로그아웃 기능을 추가하세요
+    // 로그아웃 시 localStorage 에서 토큰 삭제
+    localStorage.removeItem("accessToken");
+    localStorage.removeItem("refreshToken");
+    window.location.href = '/logout';
     alert("로그아웃 되었습니다.");
 }
 

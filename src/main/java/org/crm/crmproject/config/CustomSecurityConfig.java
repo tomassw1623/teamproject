@@ -64,14 +64,16 @@ public class CustomSecurityConfig {
 //                    .requestMatchers(PathRequest.toStaticResources().atCommonLocations()).permitAll()
 //                    .requestMatchers("/ceo/**").hasRole("CEO")
 //                    .requestMatchers("/customer/**").hasRole("CUSTOMER")
+//                                .requestMatchers("/api/").authenticated()
                     .anyRequest().permitAll()
                 )
                 .addFilterBefore(tokenCheckFilter(jwtProvider, crmUserDetailsService), UsernamePasswordAuthenticationFilter.class)
-                .formLogin(form ->{form.loginPage("/login") // 로그인 설정 부분
-                            .loginProcessingUrl("/auth/login")
+//                .formLogin(form ->{form.loginPage("/login") // 로그인 설정 부분
+//                            .loginProcessingUrl("/auth/login")
 //                    .successHandler(apiLoginSuccessHandler())
-                        .permitAll();
-                })
+//                        .permitAll();
+//                })
+
 //                .oauth2Login(httpSecurityOauth2LoginConfigurer -> {
 //                    httpSecurityOauth2LoginConfigurer.loginPage("/member/login");
 //                })
