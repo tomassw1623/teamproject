@@ -35,6 +35,7 @@ public class Ceo {
 
     private String businessNum;
 
+    @Column(name = "store_name", unique = true, nullable = false)
     private String storeName;
 
     private String storeAddress;
@@ -55,18 +56,4 @@ public class Ceo {
         this.roleSet.add(role);
     }
 
-
-
-//    @Entity
-//    public static class store{
-//        @Id
-//        @GeneratedValue(strategy = GenerationType.IDENTITY)
-//        private Long id;
-//        private String name;
-//        private String description;
-//
-//        @ManyToOne
-//        @JoinColumn(name= "ceo_ceoId")
-//        private Ceo ceo;
-//    }
 }

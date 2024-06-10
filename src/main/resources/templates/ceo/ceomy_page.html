@@ -6,6 +6,31 @@
     <title>메인 페이지</title>
     <link rel="stylesheet" th:href="@{/css/usermain.css}" />
     <script th:src="@{/js/script.js}" defer></script>
+    <style>
+        .modal {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            display: none;
+            z-index: 1000;
+            background-color: white;
+            padding: 20px;
+            border-radius: 8px;
+            opacity: 1; /* 모달 창을 불투명하게 설정 */
+        }
+        /* 모달 배경 */
+        .modal-background {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5); /* 어두운 투명 배경 적용 */
+            z-index: 999; /* 배경은 모달 아래에 위치 */
+            display: none; /* 모달이 닫혔을 때는 숨김 */
+        }
+    </style>
 </head>
 <body>
 <!-- 헤더 섹션 -->
@@ -68,5 +93,67 @@
         </div>
     </div>
 </div>
+<!-- 모 달 창 -->
+<div id="withdrawModal" class="modal">
+    <div class="modal-content">
+        <span class="close" onclick="closeModal()">&times;</span>
+        <h2>회원 탈퇴</h2>
+        <form id="withdrawForm" action="/ceo/delete" method="post">
+            <div class="form-group">
+                <input type="hidden" name="ceoId">
+                <label for="password">비밀번호</label>
+                <input type="password" id="password" name="ceoPw" required />
+            </div>
+            <button type="submit" onclick="closeModal()">회원 탈퇴</button>
+        </form>
+    </div>
+</div>
+<!-- 모달 배경 -->
+<div class="modal-background" id="modalBackground" onclick="closeModal()"></div>
+<script>
+    // 모달 열기
+    function openModal() {
+        document.getElementById('withdrawModal').style.display = 'block';
+        document.getElementById("modalBackground").style.display = "block"; // 모달 배경 표시
+    }
+    // 모달 닫기
+    function closeModal() {
+        document.getElementById("withdrawModal").style.display = "none";
+        document.getElementById("modalBackground").style.display = "none"; // 모달 배경 숨김
+    }
+
+    // // 폼 제출
+    // document.getElementById("withdrawForm").onsubmit = function() {
+    //     closeModal(); // 폼을 제출하면 모달을 닫습니다.
+    // };
+
+
+    // 폼 제출
+    function submitForm(event) {
+        event.preventDefault(); // 폼 기본 제출 동작 막기
+
+        const form = document.getElementById("withdrawForm");
+        const formData = new FormData(form);
+
+        fetch("/ceo/delete", {
+            method: "POST",
+            body: formData
+        })
+            .then(response => response.json())
+            .then(data => {
+                if (data.success) {
+                    alert("회원 탈퇴가 성공적으로 처리되었습니다.");
+                    closeModal();
+                } else {
+                    alert("회원 탈퇴에 실패하였습니다. 다시 시도해 주세요.");
+                }
+                window.location.href="/"
+            })
+            .catch(error => {
+                console.error("Error:", error);
+                alert("회원 탈퇴 중 오류가 발생하였습니다. 다시 시도해 주세요.");
+            });
+    }
+</script>
 </body>
 </html>

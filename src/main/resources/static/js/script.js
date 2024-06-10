@@ -32,7 +32,7 @@ function customerMyPage() {
 }
 
 function ceoMyPage() {
-    window.location.href = "/ceo/ceomy_page";
+    window.location.href = "/ceo/update";
 }
 
 function prevPage() {

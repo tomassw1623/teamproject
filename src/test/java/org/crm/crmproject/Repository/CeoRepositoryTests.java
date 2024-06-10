@@ -3,6 +3,7 @@ package org.crm.crmproject.Repository;
 import lombok.extern.log4j.Log4j2;
 import org.crm.crmproject.domain.Ceo;
 import org.crm.crmproject.domain.Role;
+import org.crm.crmproject.dto.CeoDTO;
 import org.crm.crmproject.repository.CeoRepository;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -74,5 +75,16 @@ public class CeoRepositoryTests {
         }
 
         log.info("삭제테스트 완료");
+    }
+
+    @Test
+    public void testFind() {
+
+        Long ceoNo = 1L;
+
+        Optional<Ceo> ceo = ceoRepository.findByCeoNo(ceoNo);
+
+        log.info(ceo);
+
     }
 }
