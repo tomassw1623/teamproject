@@ -58,11 +58,10 @@
 </head>
 <body>
 <h2>사장 정보수정 ~_~</h2>
-<form id="registerForm" action="/ceo/update" method="post">
+<form id="updateForm">
 
-    <label>아이디:</label>    <!-- #authentication.principal : 로그인시 생성되는 인증정보에서 가져오는 데이터 -->
-    <input type="text" name="ceoId" th:placeholder="${#authentication.principal.username}"
-           th:value="${#authentication.principal.username}" readonly>
+    <label>아이디:</label>
+    <input type="text" id="ceoId" name="ceoId" readonly>
 
     <label>비밀번호:</label>
     <input type="password" name="ceoPw" placeholder="비밀번호">
@@ -71,28 +70,79 @@
     <!--    <input type="password" id="pwCheck" name="pwCheck"><br>-->
 
     <label>이름:</label><br>
-    <input type="text" id="name" name="ceoName" th:placeholder="${#authentication.principal.ceoName}"><br>
+    <input type="text" id="ceoName" name="ceoName"><br>
 
     <label>이메일:</label><br>
-    <input type="email" id="email" name="ceoEmail" th:placeholder="${#authentication.principal.ceoEmail}"><br>
+    <input type="text" id="ceoEmail" name="ceoEmail"><br>
 
     <label>핸드폰 번호:</label><br>
-    <input type="tel" id="phone" name="ceoPhone" th:placeholder="${#authentication.principal.ceoPhone}"><br>
+    <input type="tel" id="ceoPhone" name="ceoPhone"><br>
 
     <label>사업자 등록 번호:</label><br>
-    <input type="tel" id="businessNum" th:placeholder="${#authentication.principal.businessNum}"
-            readonly><br>
+    <input type="tel" id="businessNum" readonly><br>
 
     <label>사업자 명:</label><br>
-    <input type="text" id="storeName" th:placeholder="${#authentication.principal.storeName}"
-            readonly><br>
+    <input type="text" id="storeName" readonly><br>
 
     <label>사업지 주소:</label><br>
-    <input type="text" id="storeAddress" name="storeAddress" th:placeholder="${#authentication.principal.storeAddress}"><br>
+    <input type="text" id="storeAddress" name="storeAddress"><br>
 
     <input type="submit" value="수정하기">
     <button type="reset">다시 작성하기</button>
 
 </form>
 </body>
+<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        const accessToken = localStorage.getItem('accessToken');
+
+        axios.get('/api/ceo/update', {
+            headers: {
+                'Authorization': `Bearer ${accessToken}`,
+                'Content-Type': 'application/json'
+            }
+        })
+            .then(response => {
+                const user = response.data;
+
+                // 사용자 정보를 form 태그에 채워넣기
+                document.getElementById('ceoId').value = user.ceoId;
+                document.getElementById('ceoName').value = user.ceoName;
+                document.getElementById('ceoEmail').value = user.ceoEmail;
+                document.getElementById('ceoPhone').value = user.ceoPhone;
+                document.getElementById('storeAddress').value = user.storeAddress;
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                if (error.response && error.response.status === 401) {
+                    window.location.href = '/login'; // Unauthorized, 로그인 페이지로 리디렉션
+                }
+            });
+    });
+</script>
+<script>
+    document.getElementById('updateForm').addEventListener('submit', function(event) {
+        event.preventDefault(); // 폼 기본 제출 방지
+
+        const formData = new FormData(this); // 폼 데이터 가져오기
+        const accessToken = localStorage.getItem('accessToken');
+
+        axios.put('/api/ceox/update', formData, {
+            headers: {
+                'Authorization': `Bearer ${accessToken}`,
+                'Content-Type': 'application/json'
+            }
+        })
+            .then(response => {
+                console.log('Updated successfully:', response.data);
+                // 여기에서 성공적으로 업데이트되었다는 메시지를 표시하거나 다른 동작을 수행할 수 있습니다.
+                window.location.href = '/ceo/main'
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                // 오류 발생 시 사용자에게 알림을 표시하거나 다른 처리를 수행할 수 있습니다.
+            });
+    });
+</script>
 </html>

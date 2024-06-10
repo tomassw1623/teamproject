@@ -31,7 +31,7 @@ public class StoreService {
     }
 
     public List<Store> getStoresByCeoId(String ceoId) {
-        Ceo ceo = ceoRepository.findById(ceoId).orElseThrow(() -> new IllegalArgumentException("Invalid Ceo ID"));
+        Ceo ceo = ceoRepository.getWithRoles(ceoId).orElseThrow(() -> new IllegalArgumentException("Invalid Ceo ID"));
         return List.of(ceo.getStore());
     }
 }

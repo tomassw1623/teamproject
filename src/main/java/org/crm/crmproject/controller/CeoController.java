@@ -6,16 +6,19 @@ import lombok.extern.log4j.Log4j2;
 import org.crm.crmproject.domain.Menu;
 import org.crm.crmproject.dto.CeoDTO;
 import org.crm.crmproject.repository.CeoRepository;
- 
+
+import org.crm.crmproject.repository.MenuRepository;
+import org.crm.crmproject.service.member.CeoService;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import java.util.List;
+
+import java.util.HashMap;
+import java.util.Map;
 
 @Controller
 @RequestMapping("/ceo")
@@ -74,28 +77,46 @@ public class CeoController {
 
     }
 
-    @PostMapping("/update")
-    public String ceoUpdatePost(@Valid CeoDTO ceoDTO, RedirectAttributes redirectAttributes) {
-        log.info("----- 사장 업데이트 포스트! -----" + ceoDTO);
-
-        try {
-            ceoRepository.updateCeo(passwordEncoder.encode(ceoDTO.getCeoPw()), ceoDTO.getCeoName(), ceoDTO.getCeoEmail(),
-                    ceoDTO.getCeoPhone(), ceoDTO.getStoreAddress(), ceoDTO.getCeoId());
-        } catch (Exception e) {
-            redirectAttributes.addFlashAttribute("error", "cid");
-            return "redirect:/ceo/update";
-        }
-        redirectAttributes.addAttribute("result", "success");
-        return "redirect:/ceo/update";
-    }
+//    @PostMapping("/update")
+//    public String ceoUpdatePost(@Valid CeoDTO ceoDTO, RedirectAttributes redirectAttributes) {
+//        log.info("----- 사장 업데이트 포스트! -----" + ceoDTO);
+//
+//        try {
+//            ceoRepository.updateCeo(passwordEncoder.encode(ceoDTO.getCeoPw()), ceoDTO.getCeoName(), ceoDTO.getCeoEmail(),
+//                    ceoDTO.getCeoPhone(), ceoDTO.getStoreAddress(), ceoDTO.getCeoId());
+//        } catch (Exception e) {
+//            redirectAttributes.addFlashAttribute("error", "cid");
+//            return "redirect:/ceo/update";
+//        }
+//        redirectAttributes.addAttribute("result", "success");
+//        return "redirect:/ceo/update";
+//    }
 
 
     @PostMapping("/delete")
-    public void ceoDeletePost(@Valid CeoDTO ceoDTO, RedirectAttributes redirectAttributes) {
+    @ResponseBody
+    public Map<String, Object> ceoDeletePost(@RequestParam("ceoPw") String ceoPw, @RequestParam("ceoId") String ceoId) {
+
+        Map<String, Object> response = new HashMap<>();
+
+        log.info(ceoId);
+        log.info(ceoPw);
 
         log.info("삭제삭제삭제삭제삭제삭제삭제삭제삭제삭제삭제삭제삭제삭제삭제삭제삭제삭제삭제");
 
-        ceoService.ceoDelete(ceoDTO);
+//        boolean isDeleted = ceoService.ceoDelete(ceoId, ceoPw);
+//
+//        log.info(isDeleted);
+//
+//        if (isDeleted) {
+//            response.put("success", true);
+//            response.put("message", "회원 탈퇴가 성공적으로 처리되었습니다.");
+//        } else {
+//            response.put("success", false);
+//            response.put("message", "회원 탈퇴에 실패하였습니다.");
+//        }
+
+        return response;
     }
 
     //그래프작업을 위해서 이곳에 컨트롤러를 작성합니다

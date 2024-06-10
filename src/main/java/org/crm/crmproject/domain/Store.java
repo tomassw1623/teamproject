@@ -20,7 +20,7 @@ public class Store {
     private String eventContent;    //  이벤트 글 내용
 
     @OneToOne
-    @JoinColumn(name= "ceo_storeName", referencedColumnName = "storeName")
+    @JoinColumn(name = "store_name", referencedColumnName = "store_name")
     private Ceo ceo;
 
 
